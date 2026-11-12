@@ -27,10 +27,10 @@ table{width:100%;border-collapse:collapse;font-size:13px}td,th{border:1px solid 
 <header><img id="logoAtas" src="https://via.placeholder.com/100?text=RTQ"><div><h1 id="judulAtas">RTQ SIROJUTH THOLIBIIN DARUL MUSTHOFA</h1><p id="alamatAtas">Rt. 28 Dusun Rambe Jaya, Desa Payo Lebar, Kec. Singkut, Kab. Sarolangun, Prov. Jambi</p></div></header>
 <nav id="menuNav"></nav>
 
-<section id="s-beranda" class="on"><div class="card"><h2>Selamat Datang</h2><p id="popupIsi"></p><p><b>Pengumuman:</b> <span id="pengumumanTxt"></span></p><p><b>Jam Belajar:</b> <span id="jamTxt"></span></p><a class="btn" style="display:block;text-align:center;text-decoration:none" href="#" onclick="show('daftar');return false">DAFTAR SEKARANG</a></div>
+<section id="s-beranda" class="on"><div class="card"><h2>Selamat Datang</h2><p id="popup"></p><p><b>Pengumuman:</b> <span id="pengumumanTxt"></span></p><p><b>Jam Belajar:</b> <span id="jamTxt"></span></p><a class="btn" style="display:block;text-align:center;text-decoration:none" href="#" onclick="show('daftar');return false">DAFTAR SEKARANG</a></div>
 <div class="card"><h3>Kegiatan Terbaru</h3><div id="kegiatanHome" class="grid"></div></div></section>
 
-<section id="s-profil"><div class="card"><h2>Profil RTQ</h2><h3>Sambutan</h3><p id="sambutanIsi"></p><h3>Sejarah</h3><p id="sejarahTxt"></p><h3>Visi</h3><p id="visiTxt"></p><h3>Misi</h3><p id="misiTxt" style="white-space:pre-line"></p><h3>Struktur Organisasi</h3><div id="strukturList"></div></div></section>
+<section id="s-profil"><div class="card"><h2>Profil RTQ</h2><h3>Sambutan</h3><p id="sambutan"></p><h3>Sejarah</h3><p id="sejarahTxt"></p><h3>V</h3><p id="vTxt"></p><h3>M</h3><p id="mTxt" style="white-space:pre-line"></p><h3>Struktur Organisasi</h3><div id="strukturList"></div></div></section>
 
 <section id="s-siswa"><div class="card"><h2>Data Siswa</h2><div id="siswaList"></div></div></section>
 <section id="s-guru"><div class="card"><h2>Data Guru</h2><div id="guruList"></div></div></section>
@@ -57,7 +57,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}td,th{border:1px solid 
 
 <script>
 const SUPABASE_URL = "https://kunrzamypyxemftjbkyp.supabase.co";
-const SUPABASE_KEY = "ISI_DENGAN_ANON_KEY_ABANG_DI_SINI";
+const SUPABASE_KEY = "sb_publishable_rlUVNww0w-QDYNmbregDQg_Gm7SO7Cl";
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 let PENG={}, PROF={}, KEG=[], STR=[], SISWA=[], GURU=[], ADMINPASS="STDM2026";
 
