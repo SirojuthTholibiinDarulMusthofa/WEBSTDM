@@ -208,4 +208,101 @@ async function gantiPassword(){
     else { document.getElementById('msgPass').textContent='Password lama salah!'; }
   }catch(e){ document.getElementById('msgPass').textContent='Gagal: '+e.message }
 }
+</script><!-- TABEL GURU PUBLIK + FORM ADMIN - TEMPEL SEKALI SAJA -->
+<div id="wrapGuruPublik" style="padding:14px;max-width:900px;margin:0 auto">
+  <h2 style="text-align:center">Data Guru</h2>
+  <div style="overflow-x:auto">
+  <table style="width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden">
+    <thead><tr style="background:#14532d;color:#fff">
+      <th style="padding:10px;border:1px solid #ddd">Foto</th>
+      <th style="padding:10px;border:1px solid #ddd">Nama & Gelar</th>
+      <th style="padding:10px;border:1px solid #ddd">Jabatan</th>
+      <th style="padding:10px;border:1px solid #ddd">Alamat</th>
+      <th style="padding:10px;border:1px solid #ddd">Nomor HP</th>
+    </tr></thead>
+    <tbody id="bodyGuru"></tbody>
+  </table>
+  </div>
+</div>
+
+<div id="wrapGuruAdmin" style="display:none;background:#fff;padding:14px;border-radius:12px;margin:14px;max-width:900px;margin-left:auto;margin-right:auto">
+  <h3>Tambah / Edit Guru</h3>
+  <input type="file" id="fotoGuru" accept="image/*" style="width:100%;margin:6px 0">
+  <img id="previewGuru" style="width:80px;height:80px;object-fit:cover;border-radius:50%;display:none;margin:6px 0">
+  <input id="namaGuru" placeholder="Nama & Gelar, contoh: H. Ahmad, S.Pd.I" style="width:100%;margin:6px 0;padding:10px">
+  <input id="jabatanGuru" placeholder="Jabatan, contoh: Kepala RTQ" style="width:100%;margin:6px 0;padding:10px">
+  <input id="alamatGuru" placeholder="Alamat" style="width:100%;margin:6px 0;padding:10px">
+  <input id="hpGuru" placeholder="Nomor HP, contoh: 081234567890" style="width:100%;margin:6px 0;padding:10px">
+  <input type="hidden" id="editGuruIndex" value="-1">
+  <button onclick="simpanGuru()" style="width:100%;padding:12px;background:#14532d;color:#fff;border:0;border-radius:8px">Simpan Guru</button>
+  <p id="msgGuru"></p>
+  <div id="listGuruAdmin"></div>
+</div>
+
+<script>
+function getGuru(){ try{ return JSON.parse(localStorage.getItem('stdm_guru')||'[]') }catch(e){ return [] } }
+function setGuru(d){ localStorage.setItem('stdm_guru', JSON.stringify(d)); }
+var _fotoGuruBase64 = '';
+document.getElementById('fotoGuru')?.addEventListener('change', function(e){
+  var f = e.target.files[0]; if(!f) return;
+  var r = new FileReader();
+  r.onload = function(ev){ _fotoGuruBase64 = ev.target.result; var p = document.getElementById('previewGuru'); p.src=_fotoGuruBase64; p.style.display='block'; };
+  r.readAsDataURL(f);
+});
+function simpanGuru(){
+  var nama=document.getElementById('namaGuru').value.trim();
+  var jabatan=document.getElementById('jabatanGuru').value.trim();
+  var alamat=document.getElementById('alamatGuru').value.trim();
+  var hp=document.getElementById('hpGuru').value.trim();
+  var idx=parseInt(document.getElementById('editGuruIndex').value);
+  if(!nama){ document.getElementById('msgGuru').textContent='Nama wajib diisi!'; return; }
+  var list=getGuru();
+  var foto=_fotoGuruBase64 || (idx>=0 ? list[idx].foto : '');
+  var obj={foto:foto,nama:nama,jabatan:jabatan,alamat:alamat,hp:hp};
+  if(idx>=0){ list[idx]=obj; } else { list.push(obj); }
+  setGuru(list);
+  document.getElementById('msgGuru').textContent='Guru berhasil disimpan!';
+  document.getElementById('namaGuru').value=''; document.getElementById('jabatanGuru').value='';
+  document.getElementById('alamatGuru').value=''; document.getElementById('hpGuru').value='';
+  document.getElementById('editGuruIndex').value='-1'; _fotoGuruBase64='';
+  document.getElementById('previewGuru').style.display='none';
+  renderGuru(); loadGuruAdmin();
+}
+function renderGuru(){
+  var list=getGuru(); var body=document.getElementById('bodyGuru'); if(!body) return;
+  if(list.length===0){ body.innerHTML='<tr><td colspan="5" style="padding:14px;text-align:center">Belum ada data guru</td></tr>'; return; }
+  body.innerHTML=list.map(function(g){
+    var foto=g.foto ? '<img src="'+g.foto+'" style="width:60px;height:60px;object-fit:cover;border-radius:50%">' : '<div style="width:60px;height:60px;background:#ddd;border-radius:50%;display:flex;align-items:center;justify-content:center">?</div>';
+    return '<tr><td style="padding:8px;border:1px solid #ddd;text-align:center">'+foto+'</td>'
+      +'<td style="padding:8px;border:1px solid #ddd;font-weight:600">'+(g.nama||'')+'</td>'
+      +'<td style="padding:8px;border:1px solid #ddd">'+(g.jabatan||'')+'</td>'
+      +'<td style="padding:8px;border:1px solid #ddd">'+(g.alamat||'')+'</td>'
+      +'<td style="padding:8px;border:1px solid #ddd"><a href="https://wa.me/'+(g.hp||'').replace(/[^0-9]/g,'')+'">'+(g.hp||'')+'</a></td></tr>';
+  }).join('');
+}
+function loadGuruAdmin(){
+  var list=getGuru(); var el=document.getElementById('listGuruAdmin'); if(!el) return;
+  el.innerHTML=list.map(function(g,i){
+    return '<div style="display:flex;align-items:center;gap:10px;border:1px solid #eee;padding:8px;border-radius:8px;margin:6px 0">'
+      +'<img src="'+(g.foto||'')+'" style="width:50px;height:50px;object-fit:cover;border-radius:50%">'
+      +'<div style="flex:1"><b>'+(g.nama||'')+'</b><br><small>'+(g.jabatan||'')+' - '+(g.hp||'')+'</small></div>'
+      +'<button onclick="editGuru('+i+')">Edit</button> <button onclick="hapusGuru('+i+')" style="color:red">Hapus</button></div>';
+  }).join('');
+  // form admin cuma muncul kalau sudah login admin
+  try{ if(window._0x7a){ document.getElementById('wrapGuruAdmin').style.display='block'; } }catch(e){}
+}
+function editGuru(i){
+  var g=getGuru()[i]; if(!g) return;
+  document.getElementById('namaGuru').value=g.nama||'';
+  document.getElementById('jabatanGuru').value=g.jabatan||'';
+  document.getElementById('alamatGuru').value=g.alamat||'';
+  document.getElementById('hpGuru').value=g.hp||'';
+  document.getElementById('editGuruIndex').value=i; _fotoGuruBase64=g.foto||'';
+  if(g.foto){ var p=document.getElementById('previewGuru'); p.src=g.foto; p.style.display='block'; }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function hapusGuru(i){ if(!confirm('Hapus guru ini?')) return; var list=getGuru(); list.splice(i,1); setGuru(list); renderGuru(); loadGuruAdmin(); }
+// cek tiap 1 detik, kalau admin login, munculkan form
+setInterval(function(){ try{ if(window._0x7a) document.getElementById('wrapGuruAdmin').style.display='block'; }catch(e){} }, 1000);
+renderGuru(); loadGuruAdmin();
 </script></body></html>
