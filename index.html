@@ -179,4 +179,33 @@ document.addEventListener('click', function(e){
   }
   _loadAll();
 })();
+</script><script>
+async function loginAdmin(){
+  var v = document.getElementById('passAdmin').value;
+  try{
+    var c = window._0x6f || _0x6f;
+    var r = await c.rpc('verify_admin', {p_input: v});
+    if(r.data === true){
+      _0x7a=true;
+      document.getElementById('loginBox').classList.add('hidden');
+      document.getElementById('adminArea').classList.remove('hidden');
+      loadAdmin(); loadDaftar(); loadGuruAdmin(); renderKegiatan(); renderStrukturAdmin(); applySetting();
+    } else {
+      document.getElementById('msgLogin').textContent='Password salah!';
+    }
+  }catch(e){ document.getElementById('msgLogin').textContent='Gagal koneksi: '+e.message }
+}
+async function gantiPassword(){
+  var o=document.getElementById('oldPass').value,
+      n1=document.getElementById('newPass').value,
+      n2=document.getElementById('newPass2').value;
+  if(n1!==n2){document.getElementById('msgPass').textContent='Ulangi password baru tidak sama!';return}
+  if(!n1||n1.length<4){document.getElementById('msgPass').textContent='Password baru minimal 4 karakter!';return}
+  try{
+    var c = window._0x6f || _0x6f;
+    var r = await c.rpc('change_admin_password', {p_old:o, p_new:n1});
+    if(r.data===true){ document.getElementById('msgPass').textContent='Password berhasil diganti untuk semua HP!'; }
+    else { document.getElementById('msgPass').textContent='Password lama salah!'; }
+  }catch(e){ document.getElementById('msgPass').textContent='Gagal: '+e.message }
+}
 </script></body></html>
