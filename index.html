@@ -5,10 +5,57 @@
 .guru-public-card p{margin:6px 0;color:#45515d;font-size:13px;line-height:1.65;overflow-wrap:anywhere}
 .guru-admin-item{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid #edf0f2}
 .guru-admin-item .guru-admin-info{flex:1;min-width:180px}
+
+/* Penyempurnaan admin kontekstual */
+.cms-context-backdrop{display:none;position:fixed;inset:0;z-index:12000;background:rgba(7,20,35,.68);padding:18px;align-items:center;justify-content:center}.cms-context-card{position:relative;background:#fff;color:#172b3c;border-radius:18px;padding:24px;width:min(560px,100%);max-height:90vh;overflow:auto;box-shadow:0 24px 70px #0005}.cms-context-card h2{margin:5px 0 16px;font-size:20px;color:#173650}.cms-context-kicker{font-size:10px;letter-spacing:1.5px;font-weight:900;color:#0d8a7c}.cms-context-close{position:absolute;right:14px;top:12px;border:0;background:#eef3f6;border-radius:50%;width:32px;height:32px;font-size:22px;cursor:pointer}.cms-context-card textarea{resize:vertical;min-height:140px}.cms-context-help{font-size:11px;color:#667788}.cms-context-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}.cms-context-actions button{border:0;border-radius:9px;padding:10px 16px;font-weight:800;cursor:pointer}.cms-context-cancel{background:#edf1f4;color:#34495b}.cms-context-save{background:#0d756d;color:#fff}.cms-context-save:disabled{opacity:.6;cursor:wait}
+
+.site-tagline{margin:7px 0 0;color:#dcecf5;font-size:10px;font-weight:800;letter-spacing:1.35px}
+.admin-foot-link{margin-left:12px;border:0;background:transparent;color:#aebbd0;font:600 10px 'Plus Jakarta Sans',sans-serif;opacity:.55;cursor:pointer;padding:3px 6px}
+.admin-foot-link:hover{opacity:1;color:#fff;text-decoration:underline}
+.cms-admin-grid,#cmsAdmin{display:none!important}
+.cms-inline-tools{display:none;gap:5px;align-items:center;margin-left:5px}
+body.admin-logged-in .cms-inline-tools{display:inline-flex}
+.cms-inline-tools button,.cms-add-sub{border:1px solid #c8d7e3;background:#fff;color:#173650;border-radius:7px;padding:5px 7px;font:800 10px 'Plus Jakarta Sans',sans-serif;cursor:pointer}
+.cms-inline-tools button:hover,.cms-add-sub:hover{background:#e8f4f2;border-color:#8bc8bd}
+.cms-nav-entry{display:flex;align-items:center;gap:3px}
+.cms-submenu .cms-nav-entry{width:100%}.cms-submenu .cms-nav-entry>button:first-child{flex:1}
+.cms-add-sub{display:block;width:100%;margin-top:7px;padding:8px;text-align:center}
+.cms-edit-note{font-size:12px;color:#526779;margin:0 0 10px}
+
+</style><style>
+/* NAVIGASI BARU: dropdown rapi, lega, dan mudah disentuh */
+.navScroll{overflow:visible;white-space:normal;padding:0 0 8px}
+#mainNav{justify-content:center;align-items:center;flex-wrap:wrap;gap:8px}
+#mainNav button{font-size:11px;padding:7px 12px;letter-spacing:.15px}
+#cmsNav{position:relative;display:flex;justify-content:center;align-items:center;gap:7px;flex-wrap:wrap;margin:8px auto 0;white-space:normal}
+#cmsNav .cms-nav-link,#cmsNav summary{appearance:none;list-style:none;border:1px solid rgba(255,255,255,.24);border-radius:9px;background:rgba(255,255,255,.10);color:#fff;padding:9px 13px;font:800 11px 'Plus Jakarta Sans',sans-serif;cursor:pointer;display:flex;align-items:center;gap:9px;min-height:36px;transition:background .18s,color .18s,transform .18s}
+#cmsNav summary::-webkit-details-marker{display:none}
+#cmsNav summary:after{content:'+';font-size:14px;font-weight:700;opacity:.8}
+#cmsNav details[open] summary:after{content:'−'}
+#cmsNav .cms-nav-link:hover,#cmsNav summary:hover,#cmsNav details[open] summary{background:#fff;color:#173650;border-color:#fff;transform:translateY(-1px)}
+#cmsNav details{position:relative}
+#cmsNav .cms-submenu{position:absolute;z-index:120;top:calc(100% + 10px);left:50%;transform:translateX(-50%);width:min(560px,calc(100vw - 28px));max-width:none;max-height:min(62vh,440px);overflow:auto;background:#fff;border:1px solid #e3eaf0;border-radius:15px;padding:13px;box-shadow:0 18px 45px rgba(7,24,43,.24);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;white-space:normal}
+#cmsNav .cms-submenu button{display:flex;align-items:center;min-height:42px;width:100%;text-align:left;border:1px solid #edf1f5;background:#f8fafc;color:#23384b;padding:10px 12px;border-radius:9px;font:700 12px 'Plus Jakarta Sans',sans-serif;line-height:1.4;white-space:normal;cursor:pointer}
+#cmsNav .cms-submenu button:before{content:'›';font-size:18px;color:#0d8a7c;margin-right:8px;line-height:1}
+#cmsNav .cms-submenu button:hover{background:#eaf5f3;border-color:#c9e7e2;color:#075c54}
+/* Editor langsung pada bagian halaman */
+#inlineEditToolbar{position:fixed;right:16px;bottom:16px;z-index:500;background:#102a43;color:#fff;border-radius:14px;padding:13px 15px;width:min(420px,calc(100vw - 24px));box-shadow:0 10px 28px rgba(16,42,67,.28);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+#inlineEditToolbar .ie-title{font-weight:900;font-size:13px;margin-right:auto}
+#inlineEditToolbar .ie-help{font-size:11px;color:#d8e7f0;flex-basis:100%;line-height:1.5}
+#inlineEditToolbar button{border:0;border-radius:9px;padding:9px 13px;font:800 12px 'Plus Jakarta Sans',sans-serif;cursor:pointer}
+#inlineEditToggle{background:#ffb800;color:#14263b}
+#inlineEditSave{background:#0e9a8b;color:#fff}
+#inlineEditCancel{background:#e8edf2;color:#263746}
+.inline-editable-active{cursor:text!important;outline:1px dashed #0e9a8b;outline-offset:3px;border-radius:3px}
+.inline-editable-active:hover{background:rgba(14,154,139,.07)}
+.inline-editable-active[contenteditable="true"]{outline:2px solid #ffb800;background:#fff9e8;color:#182838;min-width:24px}
+.inline-edit-tip{font-size:11px;color:#0b756a;font-weight:800;margin:8px 0}
+#cmsAdmin{display:none!important}
+@media(max-width:700px){.navScroll{overflow:visible}#cmsNav{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;padding:0 2px 8px;scrollbar-width:none}#cmsNav::-webkit-scrollbar{display:none}#cmsNav details{flex:0 0 auto}#cmsNav .cms-submenu{position:fixed;top:auto;left:12px;right:12px;transform:none;width:auto;max-height:55vh;grid-template-columns:1fr;z-index:200}#inlineEditToolbar{top:6px;padding:11px}#inlineEditToolbar .ie-title{flex-basis:100%}}
 </style></head><body>
 <div class="overlay" id="popup" onclick="tutupPopup()"><div class="popup" onclick="event.stopPropagation()"><button class="closePopup" onclick="tutupPopup()">X</button><div class="popupHead"><img id="popupLogo" src="" style="display:none"><div style="letter-spacing:3px;font-size:11px;color:#FFB800;font-weight:900">SELAMAT DATANG</div><h2 style="margin:8px 0 0;color:#fff" id="popupNamaRTQ">RTQ Sirojuth Tholibiin Darul Musthofa</h2></div><div class="popupBody"><h2>Selamat Datang di Portal Resmi<br><span id="popupNama2">RTQ Sirojuth Tholibiin Darul Musthofa</span></h2><p id="popupIsi">Portal resmi untuk informasi, pendaftaran siswa baru, dan data pendidikan Al-Quran di Desa Payo Lebar, Singkut, Sarolangun.</p><button class="btn btnOrange" style="width:100%;font-size:15px;padding:14px" onclick="tutupPopup()">MASUK PORTAL</button><button style="background:transparent;border:0;color:#66756C;margin-top:10px;cursor:pointer;font-weight:700" onclick="tutupPopup()">Lewati Sambutan</button></div></div></div>
 <div class="modal" id="modalFoto"><button onclick="tutupFoto()">TUTUP</button><img id="fotoBesar" src=""></div>
-<header><div class="head"><img id="headerLogo" class="logoTengah" src="" style="display:none" onerror="this.style.display='none'"><div id="logoPlaceholder" class="logoTengahPlaceholder">LOGO RTQ</div><h1 class="namaRTQ" id="namaRTQHeader">RTQ Sirojuth Tholibiin Darul Musthofa</h1><div class="alamatHeader" id="alamatHeader">Rt. 28 Dusun Rambe Jaya, Desa Payo Lebar, Kec. Singkut, Kab. Sarolangun, Prov. Jambi</div><div class="navScroll"><nav id="mainNav"><button onclick="show('beranda')" id="b-beranda" class="active" data-menu="beranda">BERANDA</button><button onclick="show('profil')" id="b-profil" data-menu="profil">PROFIL</button><button onclick="show('siswa')" id="b-siswa" data-menu="siswa">DATA SISWA</button><button onclick="show('guru')" id="b-guru" data-menu="guru">DATA GURU</button><button onclick="show('kegiatan')" id="b-kegiatan" data-menu="kegiatan">KEGIATAN</button><button onclick="show('daftar')" id="b-daftar" data-menu="daftar">PENDAFTARAN</button><button onclick="show('kontak')" id="b-kontak" data-menu="kontak">KONTAK</button><button onclick="show('admin')" id="b-admin" data-menu="admin">ADMIN</button></nav></div></div></header>
+<header><div class="head"><img id="headerLogo" class="logoTengah" src="" style="display:none" onerror="this.style.display='none'"><div id="logoPlaceholder" class="logoTengahPlaceholder">LOGO RTQ</div><h1 class="namaRTQ" id="namaRTQHeader">RTQ Sirojuth Tholibiin Darul Musthofa</h1><div class="site-tagline">PENDIDIKAN AL-QUR'AN • PEMBINAAN AKHLAK • GENERASI QUR'ANI</div><div class="alamatHeader" id="alamatHeader">Rt. 28 Dusun Rambe Jaya, Desa Payo Lebar, Kec. Singkut, Kab. Sarolangun, Prov. Jambi</div><div class="navScroll"><nav id="mainNav"></nav><div id="cmsNav" aria-label="Menu lembaga"></div></div></div></header>
 <div class="sambutanGlobal"><div class="sambutanBar"><img id="sambutanFoto" class="sambutanFoto" src="" style="display:none" onerror="this.style.display='none'"><div style="flex:1"><div style="font-size:11px;letter-spacing:2px;color:#FF7A29;font-weight:900">SAMBUTAN KEPALA RTQ</div><h4 id="sambutanJudul">Anak yang dekat dengan Al-Quran, insyaAllah dekat dengan akhlak yang baik.</h4><p id="sambutanIsi">Kami mengajak Ayah / Bunda untuk bersama-sama mendampingi putra-putri tercinta belajar mengaji, menghafal, dan mengamalkan Al-Quran.</p><div class="pengumumanChip">📢 PENGUMUMAN: <span id="pengumumanText">Pendaftaran Siswa Baru masih dibuka! Isi formulir online, lalu serahkan berkas dalam MAP ke Kepala RTQ.</span><br><span id="namaKepala" style="font-weight:900">KEPALA RTQ</span></div></div></div></div>
 <div id="heroWrap"><div class="hero"><div class="heroBox"><div class="anim"><span class="pill">SELAMAT DATANG - TAHUN AJARAN 2026</span><h1>Membentuk Generasi <em>Qurani</em>, Berakhlak Mulia, Sejak Dini.</h1><p>RTQ Sirojuth Tholibiin Darul Musthofa membina santri dengan metode <b>Yanbu'a</b> - Thoriqoh Baca, Tulis dan Menghafal Al-Quran dari Pondok Tahfidh Yanbu'ul Quran Kudus.</p><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><button class="btn btnOrange" onclick="show('daftar')">DAFTAR SISWA BARU</button><button class="btn" style="background:#fff;color:#111" onclick="show('profil')">LIHAT PROFIL RTQ</button></div></div><div class="heroCard float"><div style="font-size:11px;letter-spacing:2px;color:#FF7A29;font-weight:900">KENAPA PILIH KAMI?</div><div style="font-size:19px;line-height:1.5;margin:10px 0;font-weight:900;color:#111">Metode Yanbu'a, Guru Berpengalaman, Lingkungan Qurani.</div><p style="color:#333;font-weight:600;font-size:14.5px;line-height:1.7">Belajar membaca, menulis, dan menghafal Al-Quran dengan tartil dan tajwid yang benar, sesuai standar Yayasan Arwaniyyah Kudus.</p><div style="background:#FFF9F0;border-radius:12px;padding:12px;margin-top:14px"><b style="color:#111">JAM BELAJAR:</b><div style="color:#111;font-weight:600;font-size:15px" id="jamBelajarHero">Senin - Sabtu, 14.00 - 17.00 WIB</div></div></div></div></div></div>
 <div class="wrap" id="mainWrap">
@@ -19,7 +66,7 @@
 <section id="kegiatan" class="hidden"><div class="section anim"><h2>KEGIATAN DAN FOTO</h2><p class="muted">Dokumentasi kegiatan belajar, khataman, dan acara RTQ. Klik foto untuk memperbesar.</p><div class="gal" id="galKegiatan" style="margin-top:14px"></div></div></section>
 <section id="daftar" class="hidden"><div class="section anim"><h2>PENDAFTARAN SISWA BARU</h2><form id="formDaftar"><div class="grid2"><div><label>Nomor Induk (boleh kosong)</label><input name="nomor_induk"></div><div><label>NISN (boleh kosong)</label><input name="nisn"></div><div><label>NKK *</label><input name="nkk" required></div><div><label>NIK *</label><input name="nik" required></div><div><label>Nama Siswa *</label><input name="nama_siswa" required></div><div><label>Tempat Lahir *</label><input name="tempat_lahir" required></div><div><label>Tanggal Lahir *</label><input name="tanggal_lahir" type="date" required></div><div><label>Jenis Kelamin</label><select name="jenis_kelamin"><option>Laki-laki</option><option>Perempuan</option></select></div><div><label>Jilid (Yanbu'a)</label><select name="jilid"><option>Jilid Pemula</option><option>Jilid 1</option><option>Jilid 2</option><option>Jilid 3</option><option>Jilid 4</option><option>Jilid 5</option><option>Jilid 6</option><option>Jilid 7</option><option>Pasca</option></select></div><div><label>Nama Ayah *</label><input name="nama_ayah" required></div><div><label>Pekerjaan Ayah</label><input name="pekerjaan_ayah"></div><div><label>No HP Ayah</label><input name="hp_ayah"></div><div><label>Nama Ibu *</label><input name="nama_ibu" required></div><div><label>Pekerjaan Ibu</label><input name="pekerjaan_ibu"></div><div><label>No HP Ibu</label><input name="hp_ibu"></div></div><label>Alamat Domisili *</label><textarea name="alamat_domisili" required></textarea><label>Foto Anak</label><input type="file" id="fFoto" accept="image/*"><label>Foto Copy KK</label><input type="file" id="fKK" accept="image/*,.pdf"><label>Foto Akta Kelahiran</label><input type="file" id="fAkta" accept="image/*,.pdf"><div class="note" style="margin-top:14px"><b>KETERANGAN:</b> Semua berkas dimasukkan ke dalam <b>MAP</b> dan diserahkan kepada <b>Kepala RTQ</b> saat mendaftar.</div><button class="btn btnOrange" type="submit">KIRIM PENDAFTARAN</button><button class="btn" style="background:#FFB800;color:#111" type="button" onclick="window.print()">UNDUH / PRINT FORMULIR</button></form><p id="msgDaftar" class="muted"></p></div></section>
 <section id="kontak" class="hidden"><div class="section anim"><h2>KONTAK / WHATSAPP</h2><p class="muted">Silakan hubungi kami untuk pendaftaran, informasi biaya, jadwal, dan lainnya.</p><div class="grid2" style="margin-top:14px"><div class="prog" style="background:#1A7A32"><h3 style="color:#fff">ALAMAT RTQ</h3><p id="alamatKontak">Rt. 28 Dusun Rambe Jaya, Desa Payo Lebar, Kec. Singkut, Kab. Sarolangun, Prov. Jambi</p><p><b>Jam Belajar:</b><br><span id="jamBelajarKontak">Senin - Sabtu, 14.00 - 17.00 WIB</span></p></div><div class="prog" style="background:#0E9A8B"><h3 style="color:#fff">WHATSAPP ADMIN</h3><p>Chat langsung ke Admin RTQ.</p><a id="linkWA" href="https://wa.me/62882022211457?text=Assalamualaikum,%20saya%20mau%20daftar%20siswa%20baru%20di%20RTQ%20Sirojuth%20Tholibiin%20Darul%20Musthofa" target="_blank" style="text-decoration:none"><button class="btn btnWA" style="width:100%">CHAT WHATSAPP SEKARANG</button></a><p style="margin-top:10px;font-size:12px;color:#fff" id="noWAText">Nomor WA: 0882-0222-11457</p></div></div><div class="section" style="margin-top:14px"><h3>KIRIM PESAN CEPAT</h3><label>Nama Anda</label><input id="waNama" placeholder="Contoh: Ibu Siti"><label>Pesan</label><textarea id="waPesan" placeholder="Saya mau tanya tentang pendaftaran..."></textarea><button class="btn btnWA" onclick="kirimWA()">KIRIM KE WHATSAPP</button></div></div></section>
-<section id="admin" class="hidden"><div class="section" id="loginBox"><h2>LOGIN ADMIN</h2><label>Email Admin</label><input type="email" id="emailAdmin" value="sirojuththolibiindm@gmail.com" autocomplete="username"><label>Password Admin</label><input type="password" id="passAdmin" placeholder="Masukkan password admin" autocomplete="current-password"><button class="btn" onclick="loginAdmin()">MASUK ADMIN</button><p id="msgLogin" class="muted"></p></div>
+<section id="admin" class="hidden"><div class="section" id="loginBox"><h2>LOGIN ADMIN</h2><label>Email Admin</label><input type="email" id="emailAdmin" placeholder="Masukkan email admin" autocomplete="username" required><label>Password Admin</label><input type="password" id="passAdmin" placeholder="Masukkan password admin" autocomplete="current-password" required><button class="btn" onclick="loginAdmin()">MASUK ADMIN</button><p id="msgLogin" class="muted"></p></div>
 <div id="adminArea" class="hidden">
 <div class="section" style="background:linear-gradient(180deg,#fff,#FFF7E8);border:2px solid #FFB800"><h2>⚙️ PENGATURAN TAMPILAN, WARNA, FONT & MENU</h2><form id="formSetting"><div class="settingRow"><div><label>NAMA RTQ</label><input id="setNamaRTQ"></div><div><label>ALAMAT HEADER</label><input id="setAlamat"></div><div><label>NOMOR WA ADMIN</label><input id="setWA"></div><div><label>NOMOR WA TAMPILAN</label><input id="setWATampil"></div><div><label>WARNA UTAMA</label><input type="color" id="setWarna1"></div><div><label>WARNA KEDUA</label><input type="color" id="setWarna2"></div></div><h3>FONT JUDUL RTQ</h3><div class="settingRow"><div><label>JENIS FONT - 10 PILIHAN</label><select id="setFont"><option value="Marcellus,serif">Marcellus - Klasik Elegan</option><option value="Amiri,serif">Amiri - Arab Islami</option><option value="'Scheherazade New',serif">Scheherazade - Arab Cantik</option><option value="'Baloo 2',sans-serif">Baloo 2 - Bulat Ramah</option><option value="Poppins,sans-serif">Poppins - Modern Tebal</option><option value="Montserrat,sans-serif">Montserrat - Gagah Modern</option><option value="'Playfair Display',serif">Playfair Display - Mewah</option><option value="Lora,serif">Lora - Buku Elegan</option><option value="Cairo,sans-serif">Cairo - Arab Modern</option><option value="'Plus Jakarta Sans',sans-serif">Plus Jakarta - Bersih</option></select></div><div><label>UKURAN FONT (<span id="labelSize">34</span> px)</label><input type="range" id="setFontSize" min="20" max="48" value="34" oninput="document.getElementById('labelSize').textContent=this.value;previewFont()"></div><div><label>KETEBALAN</label><select id="setFontWeight"><option value="400">400 - Normal</option><option value="600">600 - Agak Tebal</option><option value="700">700 - Tebal</option><option value="800">800 - Sangat Tebal</option><option value="900">900 - Paling Tebal</option></select></div><div><label>KEMIRINGAN</label><select id="setFontStyle"><option value="normal">Normal - Tegak</option><option value="italic">Italic - Miring</option></select></div><div><label>JARAK HURUF</label><select id="setFontSpacing"><option value="0px">0 - Rapat</option><option value=".5px">0.5 - Normal</option><option value="1px">1 - Agak Renggang</option><option value="2px">2 - Renggang</option><option value="3px">3 - Sangat Renggang</option></select></div><div><label>WARNA JUDUL</label><input type="color" id="setFontColor" value="#FFFFFF"></div><div><label>HURUF BESAR / KECIL</label><select id="setFontTransform"><option value="uppercase">HURUF BESAR SEMUA</option><option value="none">Sesuai Ketikan</option><option value="capitalize">Huruf Depan Besar</option></select></div><div><label>PREVIEW</label><div class="fontPreview" id="fontPreview">RTQ Sirojuth Tholibiin Darul Musthofa</div></div></div><div><label>TEKS POPUP</label><input id="setPopupIsi"></div><h3>NAMA MENU</h3><div class="settingRow"><div><label>Menu Beranda</label><input id="menu-beranda"></div><div><label>Menu Profil</label><input id="menu-profil"></div><div><label>Menu Data Siswa</label><input id="menu-siswa"></div><div><label>Menu Data Guru</label><input id="menu-guru"></div><div><label>Menu Kegiatan</label><input id="menu-kegiatan"></div><div><label>Menu Pendaftaran</label><input id="menu-daftar"></div><div><label>Menu Kontak</label><input id="menu-kontak"></div><div><label>Menu Admin</label><input id="menu-admin"></div></div><h3>MENU YANG DITAMPILKAN</h3><div id="checkMenu" style="display:flex;gap:14px;flex-wrap:wrap"></div><button class="btn btnOrange" type="submit" style="margin-top:16px;width:100%;font-size:15px;padding:14px">SIMPAN SEMUA PENGATURAN</button></form><p id="msgSetting"></p><button class="btn" style="background:#999" onclick="resetSetting()">KEMBALIKAN KE AWAL</button></div>
 <div class="section"><h2>GANTI PASSWORD ADMIN</h2><label>Password Lama</label><input type="password" id="oldPass"><label>Password Baru</label><input type="password" id="newPass"><label>Ulangi Password Baru</label><input type="password" id="newPass2"><button class="btn btnOrange" onclick="gantiPassword()">GANTI PASSWORD</button><p id="msgPass"></p></div>
@@ -32,7 +79,7 @@
 <div class="section"><h2>INPUT / EDIT DATA SISWA</h2><form id="formSiswa"><input type="hidden" name="id" id="editId"><div class="grid2"><div><label>Nomor Induk</label><input name="nomor_induk"></div><div><label>NISN</label><input name="nisn"></div><div><label>NKK</label><input name="nkk"></div><div><label>NIK</label><input name="nik"></div><div><label>Nama Siswa *</label><input name="nama_siswa" required></div><div><label>Tempat Lahir</label><input name="tempat_lahir"></div><div><label>Tanggal Lahir</label><input name="tanggal_lahir" type="date"></div><div><label>Jenis Kelamin</label><select name="jenis_kelamin"><option>Laki-laki</option><option>Perempuan</option></select></div><div><label>Jilid</label><select name="jilid"><option>Jilid Pemula</option><option>Jilid 1</option><option>Jilid 2</option><option>Jilid 3</option><option>Jilid 4</option><option>Jilid 5</option><option>Jilid 6</option><option>Jilid 7</option><option>Pasca</option></select></div><div><label>Status</label><select name="status"><option>Aktif</option><option>Tidak Aktif</option><option>Lulus</option><option>Tidak Lulus</option></select></div><div><label>Nama Ayah</label><input name="nama_ayah"></div><div><label>Pekerjaan Ayah</label><input name="pekerjaan_ayah"></div><div><label>HP Ayah</label><input name="hp_ayah"></div><div><label>Nama Ibu</label><input name="nama_ibu"></div><div><label>Pekerjaan Ibu</label><input name="pekerjaan_ibu"></div><div><label>HP Ibu</label><input name="hp_ibu"></div></div><label>Alamat Domisili</label><textarea name="alamat_domisili"></textarea><button class="btn" type="submit">SIMPAN / UPDATE SISWA</button><button class="btn" style="background:#FFB800;color:#111" type="button" onclick="resetFormSiswa()">BATAL EDIT / TAMBAH BARU</button></form><p id="msgSiswa"></p></div>
 <div class="section"><h2>INPUT DATA GURU</h2><form id="formGuru"><input type="hidden" name="id" id="editGuruId"><label>Nama + Gelar *</label><input name="nama_gelar" required><label>Riwayat Pendidikan</label><textarea name="riwayat_pendidikan"></textarea><label>Alamat</label><input name="alamat"><label>Jabatan</label><select name="jabatan"><option>Kepala RTQ</option><option>Guru</option><option>Bendahara</option><option>Staff</option></select><label>No HP</label><input name="no_hp"><button class="btn" type="submit">SIMPAN GURU</button></form><p id="msgGuru"></p><div id="listGuruAdmin"></div></div>
 <div class="section"><h2>PENDAFTAR BARU MASUK</h2><div id="listDaftar"></div></div></div></section></div>
-<footer><div class="footerMain"><div><b id="namaFooter">RTQ SIROJUTH THOLIBIIN DARUL MUSTHOFA</b><p id="alamatFooter">Rt. 28 Dusun Rambe Jaya, Desa Payo Lebar, Kec. Singkut, Kab. Sarolangun, Prov. Jambi<br>WA: 0882-0222-11457<br>Jam Belajar: <span id="jamBelajarFooter">Senin - Sabtu, 14.00 - 17.00 WIB</span></p></div><div><b>MENU</b><p>BERANDA - PROFIL - DATA SISWA<br>DATA GURU - KEGIATAN<br>PENDAFTARAN - KONTAK</p></div><div><b>PROGRAM</b><p>Yanbu'a Pemula - Jilid 7<br>Pasca Yanbu'a<br>Tartil dan Tajwid<br>Akhlak dan Adab</p></div></div><div class="footerBottom" id="footerBottom">© 2026 RTQ Sirojuth Tholibiin Darul Musthofa - Metode Yanbu'a</div></footer>
+<footer><div class="footerMain"><div><b id="namaFooter">RTQ SIROJUTH THOLIBIIN DARUL MUSTHOFA</b><p id="alamatFooter">Rt. 28 Dusun Rambe Jaya, Desa Payo Lebar, Kec. Singkut, Kab. Sarolangun, Prov. Jambi<br>WA: 0882-0222-11457<br>Jam Belajar: <span id="jamBelajarFooter">Senin - Sabtu, 14.00 - 17.00 WIB</span></p></div><div><b>MENU</b><p>BERANDA - PROFIL - DATA SISWA<br>DATA GURU - KEGIATAN<br>PENDAFTARAN - KONTAK</p></div><div><b>PROGRAM</b><p>Yanbu'a Pemula - Jilid 7<br>Pasca Yanbu'a<br>Tartil dan Tajwid<br>Akhlak dan Adab</p></div></div><div class="footerBottom" id="footerBottom">© 2026 RTQ Sirojuth Tholibiin Darul Musthofa - Metode Yanbu'a</div><div class="admin-login-row"><button type="button" class="admin-foot-link" onclick="show('admin');document.getElementById('emailAdmin')?.focus();">LOGIN ADMIN</button></div></footer>
 <script>
 var _0x1a=['https://','kunrzamypyxemftjbkyp','.supabase.co'];var _0x2b=_0x1a.join('');var _0x3c='sb_publishable_'+['rlUVNww0w','-QDYNmbregDQg','_Gm7SO7Cl'].join('');var _0x4d='rtqstdm';var _0x5e='62882022211457';var _0x6f=null;try{_0x6f=supabase.createClient(_0x2b,_0x3c)}catch(e){}var _0x7a=false;var _0x8b=[];var _0x9c=['#FF7A29','#0E9A8B','#7C5CFF','#FF5A8A','#FFB800','#1A2B4A','#2A9D8F','#E63946','#6A4C93','#F4A261'];
 var _0xAA={namaRTQ:"RTQ Sirojuth Tholibiin Darul Musthofa",alamat:"Rt. 28 Dusun Rambe Jaya, Desa Payo Lebar, Kec. Singkut, Kab. Sarolangun, Prov. Jambi",wa:"62882022211457",waTampil:"0882-0222-11457",warna1:"#0F2247",warna2:"#0E9A8B",font:"Marcellus,serif",fontSize:"34",fontWeight:"400",fontStyle:"normal",fontSpacing:".5px",fontColor:"#FFFFFF",fontTransform:"uppercase",popupIsi:"Portal resmi untuk informasi, pendaftaran siswa baru, dan data pendidikan Al-Quran di Desa Payo Lebar, Singkut, Sarolangun.",menu:{beranda:"BERANDA",profil:"PROFIL",siswa:"DATA SISWA",guru:"DATA GURU",kegiatan:"KEGIATAN",daftar:"PENDAFTARAN",kontak:"KONTAK",admin:"ADMIN"},show:{beranda:true,profil:true,siswa:true,guru:true,kegiatan:true,daftar:true,kontak:true,admin:true}};
@@ -87,7 +134,7 @@ function logoutAdmin(){_0x7a=false;document.getElementById('loginBox').classList
 function usia(tgl){if(!tgl)return '-';var b=new Date(tgl),n=new Date();var u=n.getFullYear()-b.getFullYear();if(n.getMonth()<b.getMonth()||(n.getMonth()==b.getMonth()&&n.getDate()<b.getDate()))u--;return u}
 function countBy(arr,key){var o={};arr.forEach(function(d){var k=d[key]||'Tidak Diketahui';o[k]=(o[k]||0)+1});return o}
 function pieHtml(obj,total){var entries=Object.entries(obj);if(!entries.length||total===0)return 'Belum ada data.';var acc=0;var parts=entries.map(function(kv,i){var k=kv[0],v=kv[1];var c=_0x9c[i%_0x9c.length];var s=acc/total*360;acc+=v;var e=acc/total*360;return c+' '+s+'deg '+e+'deg'}).join(',');var legend=entries.map(function(kv,i){var k=kv[0],v=kv[1];var c=_0x9c[i%_0x9c.length];var p=Math.round(v/total*100);return '<div><span class="dot" style="background:'+c+'"></span><b>'+k+'</b> &nbsp; '+v+' orang - '+p+'%</div>'}).join('');return '<div class="pieWrap"><div class="pie" style="background:conic-gradient('+parts+')"></div><div class="legend">'+legend+'<div style="margin-top:10px;font-weight:800">Total: '+total+' siswa</div></div></div>'}
-async function loadPublik(){if(!_0x6f){document.getElementById('statBox').innerHTML='<div style="background:#FF7A29"><span>TOTAL SISWA</span><b>0</b></div><div style="background:#0E9A8B"><span>JUMLAH KK</span><b>0</b></div><div style="background:#7C5CFF"><span>1 KK SAMA</span><b>0</b></div><div style="background:#FF5A8A"><span>SISWA AKTIF</span><b>0</b></div>';document.getElementById('gJilid').textContent='Belum ada data.';document.getElementById('gUsia').textContent='Belum ada data.';document.getElementById('tblPublik').innerHTML='<tr><td colspan=6>Belum ada data.</td></tr>';return}try{var res=await _0x6f.from('siswa').select('*').order('id');var data=res.data||[];_0x8b=data;var total=_0x8b.length;var jilid=countBy(_0x8b,'jilid');var usiaMap={};_0x8b.forEach(function(d){var u=usia(d.tanggal_lahir);var k=u==='-'?'Tidak Diketahui':u+' Tahun';usiaMap[k]=(usiaMap[k]||0)+1});var lk=_0x8b.filter(function(d){return d.jenis_kelamin==='Laki-laki'}).length;var pr=total-lk;var aktif=_0x8b.filter(function(d){return d.status==='Aktif'}).length;var kkSet=new Set(_0x8b.map(function(d){return d.nkk}).filter(Boolean));var kkDuplikat=total-kkSet.size;document.getElementById('statBox').innerHTML='<div style="background:#FF7A29"><span>TOTAL SISWA</span><b>'+total+'</b></div><div style="background:#0E9A8B"><span>JUMLAH KK</span><b>'+kkSet.size+'</b></div><div style="background:#7C5CFF"><span>1 KK SAMA</span><b>'+kkDuplikat+'</b></div><div style="background:#FF5A8A"><span>SISWA AKTIF</span><b>'+aktif+'</b></div>';document.getElementById('gJilid').innerHTML=pieHtml(jilid,total);document.getElementById('gUsia').innerHTML=pieHtml(usiaMap,total);document.getElementById('gLain').innerHTML=pieHtml({'Laki-laki':lk,'Perempuan':pr},total);document.getElementById('gKK').innerHTML=total?'Total Siswa: <b>'+total+'</b> | Total KK: <b>'+kkSet.size+'</b> | 1 KK sama: <b>'+kkDuplikat+'</b>':'Belum ada data.';var cari=(document.getElementById('cariSiswa').value||'').toLowerCase();var tampil2=_0x8b.filter(function(d){return (d.nama_siswa||'').toLowerCase().includes(cari)});document.getElementById('tblPublik').innerHTML=tampil2.length?tampil2.map(function(d,i){return '<tr><td>'+(i+1)+'</td><td><b>'+d.nama_siswa+'</b></td><td>'+(d.jilid||'')+'</td><td>'+(usia(d.tanggal_lahir)==='-'?'-':usia(d.tanggal_lahir)+' Tahun')+'</td><td>'+(d.jenis_kelamin||'')+'</td><td><span class="badge">'+(d.status||'')+'</span></td></tr>'}).join(''):'<tr><td colspan=6>Belum ada data.</td></tr>'}catch(e){document.getElementById('gJilid').textContent='Belum ada data.'}}
+async function loadPublik(){if(!_0x6f){document.getElementById('statBox').innerHTML='<div style="background:#FF7A29"><span>TOTAL SISWA</span><b>0</b></div><div style="background:#0E9A8B"><span>JUMLAH KK</span><b>0</b></div><div style="background:#7C5CFF"><span>1 KK SAMA</span><b>0</b></div><div style="background:#FF5A8A"><span>SISWA AKTIF</span><b>0</b></div>';document.getElementById('gJilid').textContent='Belum ada data.';document.getElementById('gUsia').textContent='Belum ada data.';document.getElementById('tblPublik').innerHTML='<tr><td colspan=6>Belum ada data.</td></tr>';return}try{var res=await _0x6f.from('siswa').select('id,nama_siswa,jilid,tanggal_lahir,jenis_kelamin,status').order('id');var data=res.data||[];_0x8b=data;var total=_0x8b.length;var jilid=countBy(_0x8b,'jilid');var usiaMap={};_0x8b.forEach(function(d){var u=usia(d.tanggal_lahir);var k=u==='-'?'Tidak Diketahui':u+' Tahun';usiaMap[k]=(usiaMap[k]||0)+1});var lk=_0x8b.filter(function(d){return d.jenis_kelamin==='Laki-laki'}).length;var pr=total-lk;var aktif=_0x8b.filter(function(d){return d.status==='Aktif'}).length;document.getElementById('statBox').innerHTML='<div style="background:#FF7A29"><span>TOTAL SISWA</span><b>'+total+'</b></div><div style="background:#0E9A8B"><span>SANTRI LAKI-LAKI</span><b>'+lk+'</b></div><div style="background:#7C5CFF"><span>SANTRI PEREMPUAN</span><b>'+pr+'</b></div><div style="background:#FF5A8A"><span>SISWA AKTIF</span><b>'+aktif+'</b></div>';document.getElementById('gJilid').innerHTML=pieHtml(jilid,total);document.getElementById('gUsia').innerHTML=pieHtml(usiaMap,total);document.getElementById('gLain').innerHTML=pieHtml({'Laki-laki':lk,'Perempuan':pr},total);document.getElementById('gKK').innerHTML=total?'Total Siswa: <b>'+total+'</b> | Laki-laki: <b>'+lk+'</b> | Perempuan: <b>'+pr+'</b>':'Belum ada data.';var cari=(document.getElementById('cariSiswa').value||'').toLowerCase();var tampil2=_0x8b.filter(function(d){return (d.nama_siswa||'').toLowerCase().includes(cari)});document.getElementById('tblPublik').innerHTML=tampil2.length?tampil2.map(function(d,i){return '<tr><td>'+(i+1)+'</td><td><b>'+d.nama_siswa+'</b></td><td>'+(d.jilid||'')+'</td><td>'+(usia(d.tanggal_lahir)==='-'?'-':usia(d.tanggal_lahir)+' Tahun')+'</td><td>'+(d.jenis_kelamin||'')+'</td><td><span class="badge">'+(d.status||'')+'</span></td></tr>'}).join(''):'<tr><td colspan=6>Belum ada data.</td></tr>'}catch(e){document.getElementById('gJilid').textContent='Belum ada data.'}}
 async function loadGuru(){if(!_0x6f){document.getElementById('listGuru').textContent='Belum ada data.';return}var res=await _0x6f.from('guru').select('*').order('id');var data=res.data||[];document.getElementById('listGuru').innerHTML=data.length?data.map(function(g,i){return '<div style="border-radius:14px;padding:14px;margin-bottom:10px;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.05)"><b>'+(i+1)+'. '+g.nama_gelar+'</b> - '+g.jabatan+'<br>'+(g.riwayat_pendidikan||'')+'<br><span class="muted">'+(g.alamat||'')+'</span></div>'}).join(''):'Belum ada data.'}
 async function loadAdmin(){if(!_0x7a||!_0x6f)return;var res=await _0x6f.from('siswa').select('*').order('id');_0x8b=res.data||[];var cari=(document.getElementById('cariAdmin').value||'').toLowerCase();var tampil2=_0x8b.filter(function(d){return ((d.nama_siswa||'')+' '+(d.nik||'')+' '+(d.nkk||'')).toLowerCase().includes(cari)});document.getElementById('tblAdmin').innerHTML=tampil2.length?tampil2.map(function(d,i){return '<tr><td>'+(i+1)+'</td><td>'+(d.nomor_induk||'')+'<br>NISN: '+(d.nisn||'')+'</td><td>NKK: '+(d.nkk||'')+'<br>NIK: '+(d.nik||'')+'</td><td><b>'+d.nama_siswa+'</b><br>'+(d.tempat_lahir||'')+', '+(d.tanggal_lahir||'')+'</td><td>'+(d.jenis_kelamin||'')+'<br>'+(d.jilid||'')+'<br><span class="badge">'+(d.status||'')+'</span></td><td>Ayah: '+(d.nama_ayah||'')+'<br>HP: '+(d.hp_ayah||'')+'<br>Ibu: '+(d.nama_ibu||'')+'<br>HP: '+(d.hp_ibu||'')+'</td><td>'+(d.alamat_domisili||'')+'</td><td><button class="btn btnSmall" onclick="editSiswa('+d.id+')">Edit</button><br><button class="btn btnDel btnSmall" onclick="hapusSiswa('+d.id+')">Hapus</button></td></tr>'}).join(''):'<tr><td colspan=8>Belum ada data.</td></tr>'}
 function editSiswa(id){var d=_0x8b.find(function(x){return x.id===id});if(!d)return;var f=document.getElementById('formSiswa');document.getElementById('editId').value=d.id;['nomor_induk','nisn','nkk','nik','nama_siswa','tempat_lahir','tanggal_lahir','jenis_kelamin','jilid','status','nama_ayah','pekerjaan_ayah','hp_ayah','nama_ibu','pekerjaan_ibu','hp_ibu','alamat_domisili'].forEach(function(k){if(f.elements[k])f.elements[k].value=d[k]||''})}
@@ -100,7 +147,8 @@ async function hapusDaftar(id){await _0x6f.from('pendaftaran').delete().eq('id',
 async function terima(id){var r=await _0x6f.from('pendaftaran').select('*').eq('id',id).single();var data=r.data;await _0x6f.from('siswa').insert([Object.assign({},data,{status:'Aktif',id:undefined})]);await _0x6f.from('pendaftaran').update({status:'Diterima'}).eq('id',id);loadDaftar();loadAdmin();loadPublik()}
 async function upload(file,path){if(!file)return null;var blob=await kompresGambar(file,1000,false);var e2=await _0x6f.storage.from(_0x4d).upload(path,blob,{upsert:true,contentType:'image/jpeg'});if(e2.error){alert('Upload gagal: '+e2.error.message);return null}return _0x6f.storage.from(_0x4d).getPublicUrl(path).data.publicUrl}
 function formData(form){var o={};new FormData(form).forEach(function(v,k){o[k]=v});return o}
-document.getElementById('formDaftar').addEventListener('submit',async function(e){e.preventDefault();var o=formData(e.target);document.getElementById('msgDaftar').textContent='Mengirim...';var ts=Date.now();o.foto_url=await upload(document.getElementById('fFoto').files[0],'foto/'+ts+'-foto');o.kk_url=await upload(document.getElementById('fKK').files[0],'kk/'+ts+'-kk');o.akta_url=await upload(document.getElementById('fAkta').files[0],'akta/'+ts+'-akta');var r=await _0x6f.from('pendaftaran').insert([o]);document.getElementById('msgDaftar').textContent=r.error?'Gagal: '+r.error.message:'Pendaftaran berhasil!';if(!r.error)e.target.reset()});
+async function uploadPrivate(file,path){if(!file)return null;var ext=(file.name.split('.').pop()||'bin').toLowerCase().replace(/[^a-z0-9]/g,'');var full=path+'.'+ext;var r=await _0x6f.storage.from('dokumen-pendaftaran').upload(full,file,{upsert:false,contentType:file.type||'application/octet-stream'});if(r.error)throw r.error;return full}
+document.getElementById('formDaftar').addEventListener('submit',async function(e){e.preventDefault();var o=formData(e.target);document.getElementById('msgDaftar').textContent='Mengirim...';var ts=Date.now();o.foto_url=await uploadPrivate(document.getElementById('fFoto').files[0],'pendaftaran/'+ts+'-foto');o.kk_url=await uploadPrivate(document.getElementById('fKK').files[0],'pendaftaran/'+ts+'-kk');o.akta_url=await uploadPrivate(document.getElementById('fAkta').files[0],'pendaftaran/'+ts+'-akta');var r=await _0x6f.from('pendaftaran').insert([o]);document.getElementById('msgDaftar').textContent=r.error?'Gagal: '+r.error.message:'Pendaftaran berhasil!';if(!r.error)e.target.reset()});
 document.getElementById('formSiswa').addEventListener('submit',async function(e){e.preventDefault();var o=formData(e.target);var id=o.id;delete o.id;var res=id?await _0x6f.from('siswa').update(o).eq('id',id):await _0x6f.from('siswa').insert([o]);document.getElementById('msgSiswa').textContent=res.error?res.error.message:'Tersimpan!';if(!res.error){resetFormSiswa();loadAdmin();loadPublik()}});
 document.getElementById('formGuru').addEventListener('submit',async function(e){e.preventDefault();var o=formData(e.target);var r=await _0x6f.from('guru').insert([o]);document.getElementById('msgGuru').textContent=r.error?r.error.message:'Guru tersimpan!';if(!r.error){e.target.reset();loadGuruAdmin()}});
 loadPublik();loadGuru();
@@ -141,66 +189,6 @@ document.addEventListener('click', function(e){
     setTimeout(_0xSaveSettingServer, 800);
   }
 });
-</script><script>
-// JEMBATAN: localStorage -> Supabase, biar 1 HP edit, semua HP berubah
-(function(){
-  var c = window._0x6f || window.supabaseClient || null;
-  // cari client supabase yang sudah ada di web abang
-  try{ if(!c && window._0x6f) c = window._0x6f; }catch(e){}
-  if(!c) return;
-  var _set = localStorage.setItem.bind(localStorage);
-  var _get = localStorage.getItem.bind(localStorage);
-  var _keys = ['stdm_setting','stdm_daftar','stdm_guru','stdm_kegiatan','stdm_struktur','stdm_data','pengaturan','data_santri','data_guru','daftar','guru','kegiatan','struktur'];
-
-  // 1. Kalau ada data baru di localStorage, kirim ke server
-  localStorage.setItem = function(k,v){
-    _set(k,v);
-    if(_keys.indexOf(k)>=0 || k.indexOf('stdm')===0 || k.indexOf('data')===0){
-      try{
-        var o={}; try{o=JSON.parse(v)}catch(e){o={raw:v}}
-        c.from('sync_all').upsert([{id:k, data:o}]).then(function(r){if(r.error)console.error('Gagal menyimpan '+k+' ke Supabase:',r.error.message)});
-      }catch(e){}
-    }
-  };
-
-  // 2. Pas web dibuka, ambil data terbaru dari server, timpa localStorage
-  async function _loadAll(){
-    try{
-      // Migrasi satu kali: unggah cache lama dari browser ini hanya untuk
-      // key yang belum ada di server. Data server yang sudah ada tidak ditimpa.
-      var existing = await c.from('sync_all').select('id');
-      if(existing.error) throw existing.error;
-      var known = new Set((existing.data||[]).map(function(row){return row.id}));
-      var seed = [];
-      for(var i=0;i<localStorage.length;i++){
-        var key=localStorage.key(i);
-        if((key.indexOf('stdm_')===0 || _keys.indexOf(key)>=0) && !known.has(key)){
-          try{var raw=_get(key);var parsed=JSON.parse(raw);seed.push({id:key,data:parsed})}
-          catch(e){seed.push({id:key,data:{raw:_get(key)}})}
-        }
-      }
-      if(seed.length){var seeded=await c.from('sync_all').upsert(seed,{onConflict:'id',ignoreDuplicates:true});if(seeded.error)throw seeded.error;}
-      var r = await c.from('sync_all').select('*');
-      if(r.error) throw r.error;
-      if(r.data){
-        r.data.forEach(function(row){
-          try{
-            var val = typeof row.data==='string' ? row.data : JSON.stringify(row.data);
-            // jangan timpa kalau isinya kosong
-            if(val && val!=='{}' && val!=='null') _set(row.id, val);
-          }catch(e){}
-        });
-        if(typeof applySetting==='function') applySetting();
-        if(typeof renderKegiatan==='function') renderKegiatan();
-        if(typeof loadDaftar==='function') loadDaftar();
-        if(typeof loadAdmin==='function') loadAdmin();
-        // reload tampilan publik tanpa refresh
-        if(typeof renderDaftar==='function') renderDaftar();
-      }
-    }catch(e){}
-  }
-  _loadAll();
-})();
 </script><script>
 async function loginAdmin(){
   var email=(document.getElementById('emailAdmin').value||'').trim().toLowerCase();
@@ -275,7 +263,7 @@ async function gantiPassword(){
     if (!target) return;
     target.innerHTML = '<p class="muted">Memuat data guru...</p>';
     try {
-      var result = await db().from('guru').select('id,nama_gelar,riwayat_pendidikan,alamat,jabatan,no_hp').order('id', {ascending:true});
+      var result = await db().from('guru').select('id,nama_gelar,riwayat_pendidikan,jabatan').order('id', {ascending:true});
       if (result.error) throw result.error;
       var rows = result.data || [];
       target.innerHTML = rows.length ? rows.map(function (g) {
@@ -283,8 +271,7 @@ async function gantiPassword(){
           '<h3>' + aman(g.nama_gelar || 'Nama belum diisi') + '</h3>' +
           '<p><b>Jabatan:</b> ' + aman(g.jabatan || '-') + '</p>' +
           '<p><b>Pendidikan:</b> ' + aman(g.riwayat_pendidikan || '-') + '</p>' +
-          '<p><b>Alamat:</b> ' + aman(g.alamat || '-') + '</p>' +
-          (g.no_hp ? '<p><b>Kontak:</b> <a href="https://wa.me/' + aman(String(g.no_hp).replace(/\D/g,'')) + '">' + aman(g.no_hp) + '</a></p>' : '') +
+          
           '</article>';
       }).join('') : '<div class="note">Belum ada data guru. Informasi akan tampil setelah admin menambahkan data.</div>';
     } catch (error) {
@@ -378,6 +365,435 @@ async function gantiPassword(){
   } else {
     window.loadGuru();
   }
+})();
+</script>
+
+
+<style>
+#mainNav{display:flex;justify-content:center;margin-top:10px}
+#mainNav button{border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.12);color:#fff;padding:9px 16px;border-radius:999px;font-size:11px;font-weight:900;letter-spacing:.5px;cursor:pointer}
+#mainNav button:hover{background:#FFB800;color:#17233b}
+#cmsNav{display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap;margin:12px auto 2px;padding:0 4px;max-width:1100px}
+#cmsNav details{position:relative;display:inline-block}
+#cmsNav summary,#cmsNav .cms-nav-link{list-style:none;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.12);color:#fff;padding:9px 13px;border-radius:10px;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;white-space:nowrap}
+#cmsNav summary::-webkit-details-marker{display:none}
+#cmsNav details[open] summary,#cmsNav summary:hover,#cmsNav .cms-nav-link:hover{background:#fff;color:#17233b}
+#cmsNav .cms-submenu{position:absolute;z-index:100;top:calc(100% + 7px);left:0;min-width:230px;max-width:min(310px,85vw);max-height:65vh;overflow:auto;background:#fff;padding:7px;border-radius:12px;box-shadow:0 14px 34px #0003;border:1px solid #e6ebf2}
+#cmsNav .cms-submenu button{display:block;width:100%;text-align:left;border:0;background:#fff;color:#26352e;padding:10px 11px;border-radius:8px;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;white-space:normal}
+#cmsNav .cms-submenu button:hover{background:#edf4f2;color:#0d665b}
+.cms-content{white-space:pre-wrap;line-height:1.85;color:#26352e}
+.cms-admin-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:14px}
+.cms-page-list{max-height:430px;overflow:auto;border:1px solid #e7e7e7;border-radius:12px;padding:8px}
+.cms-page-list button{display:block;width:100%;text-align:left;border:0;background:#f7f8f6;padding:10px;border-radius:8px;margin:3px 0;cursor:pointer;font-weight:700}
+.cms-page-list button.active{background:#e5f3e9;color:#14583d}
+.cms-status{font-size:13px;font-weight:700;margin-top:10px}
+body{background:#f3f6f8;background-image:none;color:#1d2935}
+header{background:#102a43;background-image:linear-gradient(115deg,#102a43 0%,#173f5f 62%,#147d78 100%);box-shadow:0 5px 20px rgba(16,42,67,.18)}
+.head{padding-top:15px;padding-bottom:9px}
+.logoTengah{width:88px;height:88px;filter:drop-shadow(0 3px 8px rgba(0,0,0,.2))}
+.namaRTQ{text-shadow:none;letter-spacing:.2px}
+.alamatHeader{color:#dbe9f2;font-size:12px}
+.section,.sambutanBar,.heroCard{border:1px solid #e7edf1;box-shadow:0 5px 18px rgba(16,42,67,.055)}
+.section{border-radius:16px}
+.sambutanBar{border-radius:16px}
+#mainNav{margin-top:8px}
+#mainNav button{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3);padding:7px 13px}
+#cmsNav{margin-top:9px}
+#cmsNav summary,#cmsNav .cms-nav-link{border-color:rgba(255,255,255,.16);background:rgba(255,255,255,.09)}
+#cmsNav details[open] summary,#cmsNav summary:hover,#cmsNav .cms-nav-link:hover{background:#fff;color:#102a43}
+@media(max-width:700px){.head{padding:13px 12px 10px}.logoTengah{width:76px;height:76px}.navScroll{overflow:visible;white-space:normal}#cmsNav{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:0 2px 7px;gap:6px}#cmsNav::-webkit-scrollbar{display:none}#cmsNav details{flex:0 0 auto}#cmsNav summary,#cmsNav .cms-nav-link{padding:9px 11px;font-size:10px}#cmsNav .cms-submenu{position:fixed;top:auto;left:10px;right:10px;max-width:none;max-height:55vh}.cms-admin-grid{grid-template-columns:1fr}}
+
+/* Navigasi tegas dan tombol login admin kecil di kaki halaman */
+#cmsNav summary,#cmsNav .cms-nav-link{font-size:12px;font-weight:900;letter-spacing:.55px;text-transform:uppercase;padding:11px 16px;border-radius:11px}
+#cmsNav .cms-submenu button{font-weight:700;text-transform:none}
+.admin-login-row{text-align:center;background:#08152E;padding:2px 12px 12px}
+.admin-foot-link{border:0;background:transparent;color:#9eacc2;font:600 10px 'Plus Jakarta Sans',sans-serif;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;padding:4px 9px;opacity:.72}
+.admin-foot-link:hover{color:#fff;opacity:1;text-decoration:underline}
+#inlineEditToolbar{display:none!important}
+.cms-context-backdrop{position:fixed;inset:0;background:rgba(7,20,38,.68);z-index:10050;display:none;align-items:center;justify-content:center;padding:16px;overflow:auto}
+.cms-context-card{position:relative;background:#fff;width:min(760px,100%);max-height:90vh;overflow:auto;border-radius:18px;padding:22px;box-shadow:0 25px 70px #0005}
+.cms-context-card h2{margin:0 0 8px;color:#153653;font-size:21px}
+.cms-context-card .cms-context-kicker{font-size:11px;font-weight:900;letter-spacing:1px;color:#0c8278;margin-bottom:7px}
+.cms-context-close{position:absolute;right:14px;top:12px;border:0;background:#edf2f6;border-radius:50%;width:34px;height:34px;font-size:20px;cursor:pointer}
+.cms-block-row{border:1px solid #e1e8ef;border-radius:12px;padding:12px;margin:10px 0;background:#f8fafc}
+.cms-block-row-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.cms-block-row-head strong{font-size:12px;color:#24445d}
+.cms-block-row textarea{min-height:76px;resize:vertical}
+.cms-block-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.cms-block-actions button,.cms-delete-page{border:0;border-radius:9px;padding:10px 13px;font-weight:800;cursor:pointer}
+.cms-add-block{background:#e5f4ef;color:#086c5c}.cms-delete-page{background:#fff0f0;color:#b42318}
+.cms-content-block{margin:0 0 14px}.cms-content-block h3{margin:0 0 7px;color:#163d58}.cms-content-block p{line-height:1.8;white-space:pre-wrap}.cms-content-block ul{padding-left:22px;line-height:1.8}
+.cms-nav-entry{display:flex;align-items:center;gap:5px}.cms-inline-tools button{border:0;background:#e8f2f4;color:#15435b;border-radius:7px;padding:6px 9px;cursor:pointer;font-weight:900}.cms-add-sub{margin-top:5px!important;background:#edf6f4!important;color:#11665d!important}
+body.admin-logged-in [contenteditable="true"]{outline:none!important;border:0!important;box-shadow:none!important}
+
+</style>
+<script>
+(function(){
+'use strict';
+const db=()=>window._0x6f||null;
+const ADMIN_EMAIL='sirojuththolibiindm@gmail.com';
+const DEFAULT_PAGES=[{"id": "profil-sejarah", "title": "Sejarah Lembaga", "menu": "Profil", "content": "Tuliskan sejarah berdirinya lembaga di sini."}, {"id": "profil-visi-misi", "title": "Visi dan Misi", "menu": "Profil", "content": "Visi:\nMembentuk generasi Qurani yang berakhlak mulia.\n\nMisi:\n1. Menyelenggarakan pendidikan Al-Quran.\n2. Membina adab dan akhlak santri."}, {"id": "profil-identitas", "title": "Identitas dan Legalitas", "menu": "Profil", "content": "Lengkapi identitas, nomor statistik, dan legalitas lembaga."}, {"id": "profil-pendiri", "title": "Pendiri dan Pimpinan", "menu": "Profil", "content": "Tuliskan profil pendiri dan pimpinan lembaga."}, {"id": "profil-struktur", "title": "Struktur Organisasi", "menu": "Profil", "content": "Struktur organisasi dapat dikelola melalui fitur Kelola Struktur Organisasi yang sudah tersedia."}, {"id": "pendidikan-kurikulum", "title": "Kurikulum", "menu": "Pendidikan", "content": "Kurikulum Yanbu'a dan program pendidikan lembaga."}, {"id": "pendidikan-program", "title": "Program Pendidikan", "menu": "Pendidikan", "content": "Tuliskan program unggulan, target pembelajaran, dan metode pendidikan."}, {"id": "pendidikan-kelas", "title": "Jenjang dan Kelas", "menu": "Pendidikan", "content": "Tuliskan jenjang, tingkat, dan pembagian kelas."}, {"id": "pendidikan-mapel", "title": "Mata Pelajaran dan Kitab", "menu": "Pendidikan", "content": "Tuliskan daftar mata pelajaran dan kitab yang dipelajari."}, {"id": "pendidikan-kalender", "title": "Kalender Akademik", "menu": "Pendidikan", "content": "Tuliskan kalender dan jadwal akademik."}, {"id": "kesantrian-tatib", "title": "Tata Tertib Santri", "menu": "Kesantrian", "content": "Tuliskan tata tertib, hak, dan kewajiban santri."}, {"id": "kesantrian-pembinaan", "title": "Pembinaan Akhlak dan Adab", "menu": "Kesantrian", "content": "Tuliskan program pembinaan akhlak dan adab."}, {"id": "kesantrian-kegiatan", "title": "Kegiatan Santri", "menu": "Kesantrian", "content": "Tuliskan kegiatan harian, mingguan, bulanan, dan tahunan."}, {"id": "informasi-berita", "title": "Berita Lembaga", "menu": "Informasi", "content": "Berita terbaru lembaga dapat ditulis dan diperbarui admin di sini."}, {"id": "informasi-pengumuman", "title": "Pengumuman Resmi", "menu": "Informasi", "content": "Pengumuman resmi lembaga."}, {"id": "informasi-agenda", "title": "Agenda Kegiatan", "menu": "Informasi", "content": "Agenda kegiatan dan jadwal penting."}, {"id": "informasi-artikel", "title": "Artikel Pendidikan dan Keislaman", "menu": "Informasi", "content": "Artikel pendidikan dan keislaman."}, {"id": "prestasi-santri", "title": "Prestasi Santri", "menu": "Prestasi & Kegiatan", "content": "Catat prestasi santri dan lembaga."}, {"id": "prestasi-karya", "title": "Karya dan Ekstrakurikuler", "menu": "Prestasi & Kegiatan", "content": "Publikasikan karya dan kegiatan ekstrakurikuler."}, {"id": "layanan-wali", "title": "Layanan Wali Santri", "menu": "Layanan", "content": "Informasi layanan dan komunikasi wali santri."}, {"id": "layanan-unduhan", "title": "Unduhan Dokumen", "menu": "Layanan", "content": "Tambahkan informasi dokumen yang dapat diunduh."}, {"id": "psb-persyaratan", "title": "Persyaratan Pendaftaran", "menu": "PSB", "content": "Tuliskan persyaratan calon santri baru, dokumen yang harus disiapkan, dan ketentuan pendaftaran."}, {"id": "psb-alur", "title": "Alur Pendaftaran", "menu": "PSB", "content": "1. Isi formulir pendaftaran online.\n2. Siapkan dokumen persyaratan.\n3. Serahkan berkas kepada petugas lembaga.\n4. Ikuti proses verifikasi dan daftar ulang."}, {"id": "psb-jadwal", "title": "Jadwal Pendaftaran", "menu": "PSB", "content": "Tuliskan tanggal pembukaan, penutupan, seleksi, dan daftar ulang."}, {"id": "psb-biaya", "title": "Biaya Pendidikan", "menu": "PSB", "content": "Tuliskan rincian biaya pendidikan secara resmi dan transparan."}, {"id": "psb-faq", "title": "FAQ Pendaftaran", "menu": "PSB", "content": "Tuliskan pertanyaan yang sering diajukan calon santri dan wali santri."}];
+const DEFAULT_MENUS=[{"title": "Beranda", "target": "beranda", "children": []}, {"title": "Profil", "target": "", "children": [{"title": "Sejarah Lembaga", "target": "profil-sejarah"}, {"title": "Visi dan Misi", "target": "profil-visi-misi"}, {"title": "Identitas dan Legalitas", "target": "profil-identitas"}, {"title": "Pendiri dan Pimpinan", "target": "profil-pendiri"}, {"title": "Struktur Organisasi", "target": "profil-struktur"}]}, {"title": "Pendidikan", "target": "", "children": [{"title": "Kurikulum", "target": "pendidikan-kurikulum"}, {"title": "Program Pendidikan", "target": "pendidikan-program"}, {"title": "Jenjang dan Kelas", "target": "pendidikan-kelas"}, {"title": "Mata Pelajaran dan Kitab", "target": "pendidikan-mapel"}, {"title": "Kalender Akademik", "target": "pendidikan-kalender"}]}, {"title": "Kesantrian", "target": "", "children": [{"title": "Tata Tertib Santri", "target": "kesantrian-tatib"}, {"title": "Pembinaan Akhlak dan Adab", "target": "kesantrian-pembinaan"}, {"title": "Kegiatan Santri", "target": "kesantrian-kegiatan"}]}, {"title": "Informasi", "target": "", "children": [{"title": "Berita Lembaga", "target": "informasi-berita"}, {"title": "Pengumuman Resmi", "target": "informasi-pengumuman"}, {"title": "Agenda Kegiatan", "target": "informasi-agenda"}, {"title": "Artikel Pendidikan dan Keislaman", "target": "informasi-artikel"}]}, {"title": "Prestasi & Kegiatan", "target": "kegiatan", "children": [{"title": "Prestasi Santri", "target": "prestasi-santri"}, {"title": "Karya dan Ekstrakurikuler", "target": "prestasi-karya"}]}, {"title": "Galeri", "target": "kegiatan", "children": []}, {"title": "PSB", "target": "daftar", "children": [{"title": "Persyaratan Pendaftaran", "target": "psb-persyaratan", "visible": true}, {"title": "Alur Pendaftaran", "target": "psb-alur", "visible": true}, {"title": "Jadwal Pendaftaran", "target": "psb-jadwal", "visible": true}, {"title": "Biaya Pendidikan", "target": "psb-biaya", "visible": true}, {"title": "FAQ Pendaftaran", "target": "psb-faq", "visible": true}]}, {"title": "Data Santri", "target": "siswa", "children": []}, {"title": "Tenaga Pendidik", "target": "guru", "children": []}, {"title": "Layanan", "target": "", "children": [{"title": "Layanan Wali Santri", "target": "layanan-wali"}, {"title": "Unduhan Dokumen", "target": "layanan-unduhan"}]}, {"title": "Kontak", "target": "kontak", "children": []}];
+let cms={menus:DEFAULT_MENUS,pages:DEFAULT_PAGES,legacy:{}};
+let activePageId='';
+const nativeSet=localStorage.setItem.bind(localStorage);
+const LEGACY_KEYS=['stdm_setting','stdm_profil','stdm_struktur','stdm_kegiatan'];
+const esc=v=>String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const byId=id=>document.getElementById(id);
+function status(msg,bad=false){const n=byId('cmsStatus');if(n){n.textContent=msg;n.style.color=bad?'#b42318':'#087443';}}
+function makePublicNav(){
+ const host=byId('cmsNav'); if(!host)return;
+ const buckets=[
+  {title:'Beranda',keys:['Beranda'],direct:'beranda'},
+  {title:'Profil',keys:['Profil'],direct:'profil'},
+  {title:'Akademik',keys:['Pendidikan','Kesantrian']},
+  {title:'Informasi',keys:['Informasi','Prestasi & Kegiatan','Galeri'],direct:'kegiatan'},
+  {title:'Data',keys:['Data Santri','Tenaga Pendidik'],direct:'siswa'},
+  {title:'PSB',keys:['PSB'],direct:'daftar'},
+  {title:'Layanan & Kontak',keys:['Layanan','Kontak'],direct:'kontak'}
+ ];
+ const visible=cms.menus.filter(m=>m.visible!==false);
+ const byTitle=new Map(visible.map(m=>[String(m.title||'').trim(),m]));
+ const entries=buckets.map(bucket=>{
+  const links=[];
+  bucket.keys.forEach(key=>{
+   const menu=byTitle.get(key); if(!menu)return;
+   if(menu.target) links.push({title:menu.title,target:menu.target});
+   (menu.children||[]).filter(ch=>ch.visible!==false).forEach(ch=>links.push({title:ch.title,target:ch.target}));
+  });
+  if(bucket.direct && !links.some(link=>link.target===bucket.direct)){
+   const directLabels={Beranda:'Beranda',Profil:'Ringkasan Profil',Informasi:'Galeri & Kegiatan',Data:'Data Santri',PSB:'Pendaftaran', 'Layanan & Kontak':'Kontak'};
+   links.unshift({title:directLabels[bucket.title]||bucket.title,target:bucket.direct});
+  }
+  if(bucket.title==='Beranda' && !links.length)links.push({title:'Beranda',target:'beranda'});
+  // Avoid repeated destinations when a legacy group points to the same built-in page.
+  const seen=new Set();
+  const clean=links.filter(x=>x.target&&!seen.has(x.target)&&seen.add(x.target));
+  return {...bucket,links:clean};
+ }).filter(x=>x.links.length);
+ host.innerHTML=entries.map((group,index)=>{
+  if(group.links.length===1)return `<button type="button" class="cms-nav-link" onclick="cmsOpenPage('${esc(group.links[0].target)}')">${esc(group.title)}</button>`;
+  return `<details class="cms-nav-group"><summary>${esc(group.title)} <span aria-hidden="true">⌄</span></summary><div class="cms-submenu">${group.links.map(link=>`<button type="button" onclick="cmsOpenPage('${esc(link.target)}')">${esc(link.title)}</button>`).join('')}</div></details>`;
+ }).join('');
+ // Close other dropdowns after one is opened, and close all when a link is chosen.
+ host.querySelectorAll('details').forEach(detail=>detail.addEventListener('toggle',()=>{
+  if(detail.open)host.querySelectorAll('details').forEach(other=>{if(other!==detail)other.open=false;});
+ }));
+ host.querySelectorAll('.cms-submenu button').forEach(button=>button.addEventListener('click',()=>{
+  host.querySelectorAll('details').forEach(detail=>detail.open=false);
+ }));
+}
+function renderPage(id){
+ const page=cms.pages.find(p=>p.id===id);
+ if(!page){if(['beranda','profil','siswa','guru','kegiatan','daftar','kontak'].includes(id)){window.show(id);return;}return;}
+ let sec=byId('cms-page-'+id);
+ if(!sec){sec=document.createElement('section');sec.id='cms-page-'+id;sec.className='hidden';byId('mainWrap').appendChild(sec);}
+ sec.innerHTML=`<div class="section anim"><h2>${esc(page.title)}</h2><div class="cms-content">${esc(page.content||'Informasi akan segera diperbarui oleh admin.')}</div></div>`;
+ window.show('cms-page-'+id);
+}
+window.cmsOpenPage=function(id){if(id)renderPage(id);};
+window.show=function(id){
+ document.querySelectorAll('#mainWrap section').forEach(s=>s.classList.add('hidden'));
+ const el=byId(id)||byId('cms-page-'+id);
+ if(el)el.classList.remove('hidden');
+ const hero=byId('heroWrap');if(hero)hero.style.display=id==='beranda'?'block':'none';
+ const wrap=byId('mainWrap');if(wrap)wrap.className='wrap theme-'+id;
+ document.querySelectorAll('#mainNav button').forEach(b=>b.classList.remove('active'));
+ const b=byId('b-'+id);if(b)b.classList.add('active');
+ if(typeof loadPublik==='function'&&(id==='beranda'||id==='siswa'))loadPublik();
+ if(typeof loadGuru==='function'&&id==='guru')loadGuru();
+ if(typeof renderBagan==='function'&&id==='profil')renderBagan();
+ window.scrollTo({top:0,behavior:'smooth'});
+};
+async function loadCMS(){
+ const c=db(); if(!c)return;
+ try{
+  const r=await c.from('portal_cms').select('data').eq('id','main').maybeSingle();
+  if(r.error)throw r.error;
+  if(r.data&&r.data.data){cms={menus:r.data.data.menus||DEFAULT_MENUS,pages:r.data.data.pages||DEFAULT_PAGES,legacy:r.data.data.legacy||{}};Object.keys(cms.legacy).forEach(k=>{try{nativeSet(k,typeof cms.legacy[k]==='string'?cms.legacy[k]:JSON.stringify(cms.legacy[k]));}catch(e){}});if(typeof loadProfil==='function')loadProfil();if(typeof renderKegiatan==='function')renderKegiatan();if(typeof renderBagan==='function')renderBagan();if(typeof renderStrukturAdmin==='function')renderStrukturAdmin();if(typeof applySetting==='function')applySetting();}
+  makePublicNav();
+ }catch(e){console.warn('CMS Supabase:',e.message);makePublicNav();}
+}
+function buildAdmin(){
+ const root=byId('adminArea');if(!root||byId('cmsAdmin'))return;
+ const panel=document.createElement('div');panel.className='section';panel.id='cmsAdmin';
+ panel.innerHTML=`<h2>KELOLA MENU, SUBMENU & KONTEN WEBSITE</h2>
+ <p class="muted">Semua perubahan pada modul ini disimpan ke tabel <b>portal_cms</b> di Supabase. Pilih halaman untuk memperbarui judul dan isi; perubahan baru tampil setelah disimpan.</p>
+ <div class="cms-admin-grid"><div><h3>DAFTAR HALAMAN</h3><div class="cms-page-list" id="cmsPageList"></div>
+ <h3>TAMBAH HALAMAN / SUBMENU</h3><label>Nama halaman</label><input id="cmsNewTitle" placeholder="Contoh: Fasilitas Lembaga"><label>Kelompok menu</label><input id="cmsNewMenu" list="cmsMenuOptions" placeholder="Contoh: Informasi"><datalist id="cmsMenuOptions"></datalist><label>Isi awal</label><textarea id="cmsNewContent" rows="4" placeholder="Tulis informasi halaman..."></textarea><button class="btn btnOrange" type="button" onclick="cmsAddPage()">TAMBAH HALAMAN</button></div>
+ <div><h3>EDIT KONTEN TERPILIH</h3><label>Judul halaman</label><input id="cmsEditTitle"><label>Kelompok menu</label><input id="cmsEditMenu" list="cmsEditMenuOptions"><datalist id="cmsEditMenuOptions"></datalist><label><input type="checkbox" id="cmsEditVisible" checked style="width:auto"> Tampilkan submenu di website</label><label>Isi halaman</label><textarea id="cmsEditContent" rows="15" placeholder="Tulis konten halaman. Baris baru akan dipertahankan."></textarea><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"><button class="btn btnOrange" type="button" onclick="cmsSavePage()">SIMPAN KONTEN</button><button class="btn btnDel" type="button" onclick="cmsDeletePage()">HAPUS HALAMAN</button></div></div></div>
+ <h3>KELOLA SUSUNAN MENU</h3><p class="muted">Ubah nama, urutan, atau hapus kelompok menu yang tidak memiliki submenu.</p><div id="cmsMenuEditor"></div><button class="btn" type="button" onclick="cmsSaveMenus()">SIMPAN SUSUNAN MENU</button><p id="cmsStatus" class="cms-status"></p>`;
+ root.appendChild(panel);
+}
+function refreshAdmin(){
+ const list=byId('cmsPageList');if(!list)return;
+ list.innerHTML=cms.pages.map(p=>`<button type="button" class="${p.id===activePageId?'active':''}" onclick="cmsSelectPage('${esc(p.id)}')">${esc(p.title)} <small>· ${esc(p.menu||'Halaman')}</small></button>`).join('');
+ const opts=[...new Set(cms.menus.map(m=>m.title))].map(t=>`<option value="${esc(t)}"></option>`).join('');const dl=byId('cmsMenuOptions');if(dl)dl.innerHTML=opts;const dl2=byId('cmsEditMenuOptions');if(dl2)dl2.innerHTML=opts;
+ const editor=byId('cmsMenuEditor');if(editor)editor.innerHTML=cms.menus.map((m,i)=>`<div style="display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;gap:6px;align-items:center;margin:8px 0"><input data-cms-menu="${i}" value="${esc(m.title)}"><label style="display:flex;gap:5px;align-items:center;margin:0;text-transform:none"><input type="checkbox" data-cms-visible="${i}" ${m.visible!==false?'checked':''} style="width:auto"> Tampil</label><button type="button" class="btn btnSmall" onclick="cmsMoveMenu(${i},-1)">↑</button><button type="button" class="btn btnSmall" onclick="cmsMoveMenu(${i},1)">↓</button><button type="button" class="btn btnDel btnSmall" onclick="cmsDeleteMenu(${i})">HAPUS</button><small class="muted" style="grid-column:1/-1">${(m.children||[]).length} submenu</small></div>`).join('');
+ if(activePageId)window.cmsSelectPage(activePageId);
+}
+window.cmsSelectPage=function(id){
+ const p=cms.pages.find(x=>x.id===id);if(!p)return;activePageId=id;
+ byId('cmsEditTitle').value=p.title||'';byId('cmsEditContent').value=p.content||'';byId('cmsEditMenu').value=p.menu||'Informasi';byId('cmsEditVisible').checked=p.visible!==false;
+ refreshListOnly();
+};
+function refreshListOnly(){const list=byId('cmsPageList');if(list)list.innerHTML=cms.pages.map(p=>`<button type="button" class="${p.id===activePageId?'active':''}" onclick="cmsSelectPage('${esc(p.id)}')">${esc(p.title)} <small>· ${esc(p.menu||'Halaman')}</small></button>`).join('');}
+async function saveToServer(){
+ const c=db();if(!c)throw new Error('Supabase belum terhubung.');
+ const u=await c.auth.getUser();if(!u.data.user||String(u.data.user.email||'').toLowerCase()!==ADMIN_EMAIL)throw new Error('Sesi admin tidak valid. Silakan login ulang.');
+ const r=await c.from('portal_cms').upsert({id:'main',data:cms,updated_at:new Date().toISOString()},{onConflict:'id'});
+ if(r.error)throw r.error;
+}
+window.cmsSavePage=async function(){
+ const p=cms.pages.find(x=>x.id===activePageId);if(!p)return status('Pilih halaman terlebih dahulu.',true);
+ p.title=byId('cmsEditTitle').value.trim()||p.title;p.content=byId('cmsEditContent').value;p.visible=byId('cmsEditVisible').checked;const oldMenu=p.menu;p.menu=byId('cmsEditMenu').value.trim()||oldMenu;let group=cms.menus.find(m=>m.title===p.menu);if(!group){group={title:p.menu,target:'',children:[]};cms.menus.push(group);}cms.menus.forEach(m=>m.children=(m.children||[]).filter(ch=>ch.target!==p.id));group.children=group.children||[];group.children.push({title:p.title,target:p.id});
+ try{status('Menyimpan ke Supabase...');await saveToServer();makePublicNav();renderPage(p.id);refreshAdmin();status('Berhasil disimpan ke Supabase.');}catch(e){status('Gagal menyimpan: '+e.message,true);}
+};
+window.cmsAddPage=async function(){
+ const title=byId('cmsNewTitle').value.trim();if(!title)return status('Isi nama halaman.',true);
+ const base=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+ let id=base||('halaman-'+Date.now());if(cms.pages.some(p=>p.id===id))id+='-'+Date.now();
+ const menu=byId('cmsNewMenu').value.trim()||'Informasi';
+ cms.pages.push({id,title,menu,content:byId('cmsNewContent').value});
+ let group=cms.menus.find(m=>m.title===menu);if(!group){group={title:menu,target:'',children:[]};cms.menus.push(group);}
+ group.children=group.children||[];group.children.push({title:title,target:id,visible:true});
+ try{await saveToServer();byId('cmsNewTitle').value='';byId('cmsNewContent').value='';activePageId=id;makePublicNav();refreshAdmin();renderPage(id);status('Halaman dan submenu berhasil ditambahkan ke Supabase.');}
+ catch(e){status('Gagal menyimpan: '+e.message,true);}
+};
+window.cmsDeletePage=async function(){
+ if(!activePageId||!confirm('Hapus halaman ini?'))return;
+ const id=activePageId;cms.pages=cms.pages.filter(p=>p.id!==id);
+ cms.menus.forEach(m=>m.children=(m.children||[]).filter(ch=>ch.target!==id));
+ try{await saveToServer();activePageId='';makePublicNav();refreshAdmin();status('Halaman dihapus dari Supabase.');}catch(e){status('Gagal menghapus: '+e.message,true);}
+};
+window.cmsSaveMenus=async function(){
+ document.querySelectorAll('[data-cms-menu]').forEach(input=>{const i=Number(input.dataset.cmsMenu);if(cms.menus[i])cms.menus[i].title=input.value.trim()||cms.menus[i].title;});document.querySelectorAll('[data-cms-visible]').forEach(input=>{const i=Number(input.dataset.cmsVisible);if(cms.menus[i])cms.menus[i].visible=input.checked;});
+ // Keep each page's menu association aligned with renamed groups by index only when matching old title is not inferable.
+ try{await saveToServer();makePublicNav();refreshAdmin();status('Susunan menu berhasil disimpan ke Supabase.');}catch(e){status('Gagal menyimpan: '+e.message,true);}
+};
+window.cmsMoveMenu=async function(index,delta){const next=index+delta;if(next<0||next>=cms.menus.length)return;const item=cms.menus.splice(index,1)[0];cms.menus.splice(next,0,item);try{await saveToServer();makePublicNav();refreshAdmin();status('Urutan menu disimpan ke Supabase.');}catch(e){status('Gagal menyimpan: '+e.message,true);}};
+window.cmsDeleteMenu=async function(index){const m=cms.menus[index];if(!m)return;if((m.children||[]).length){status('Kelompok masih memiliki submenu. Pindahkan atau hapus halaman di dalamnya terlebih dahulu.',true);return;}if(!confirm('Hapus kelompok menu '+m.title+'?'))return;cms.menus.splice(index,1);try{await saveToServer();makePublicNav();refreshAdmin();status('Kelompok menu dihapus.');}catch(e){status('Gagal menghapus: '+e.message,true);}};
+window.cmsReload=async function(){await loadCMS();refreshAdmin();};
+// Sinkronisasi terbatas untuk konten lama saja. Kunci autentikasi/password tidak pernah disalin.
+const nativeGet=localStorage.getItem.bind(localStorage);
+localStorage.setItem=function(key,value){
+ nativeSet(key,value);
+ if(LEGACY_KEYS.includes(key)){
+  try{cms.legacy=cms.legacy||{};cms.legacy[key]=JSON.parse(value);saveToServer().catch(err=>console.error('Konten belum tersimpan di Supabase:',err.message));}
+  catch(err){console.error('Gagal menyiapkan sinkronisasi konten:',err.message);}
+ }
+};
+window.cmsMigrateLegacy=async function(){
+ cms.legacy=cms.legacy||{};
+ LEGACY_KEYS.forEach(key=>{if(cms.legacy[key]===undefined){const raw=nativeGet(key);if(raw){try{cms.legacy[key]=JSON.parse(raw);}catch(e){}}}});
+ await saveToServer();
+};
+const originalLogin=window.loginAdmin;
+if(typeof originalLogin==='function'){
+ window.loginAdmin=async function(){await originalLogin();if(window._0x7a){try{await window.cmsMigrateLegacy();}catch(e){console.warn('Migrasi konten lama tertunda:',e.message);}}};
+}
+
+// Navigasi dikelompokkan dalam panel dropdown yang konsisten.
+makePublicNav=function(){
+ const host=byId('cmsNav');if(!host)return;
+ const buckets=[
+  {title:'Beranda',keys:['Beranda'],direct:'beranda'},
+  {title:'Profil',keys:['Profil'],direct:'profil'},
+  {title:'Akademik',keys:['Pendidikan','Kesantrian']},
+  {title:'Informasi',keys:['Informasi','Prestasi & Kegiatan','Galeri'],direct:'kegiatan'},
+  {title:'Data',keys:['Data Santri','Tenaga Pendidik'],direct:'siswa'},
+  {title:'PSB',keys:['PSB'],direct:'daftar'},
+  {title:'Layanan & Kontak',keys:['Layanan','Kontak'],direct:'kontak'}
+ ];
+ const visible=cms.menus.filter(m=>m.visible!==false),byTitle=new Map(visible.map(m=>[String(m.title||'').trim(),m]));
+ const entries=buckets.map(bucket=>{const links=[];bucket.keys.forEach(key=>{const m=byTitle.get(key);if(!m)return;if(m.target)links.push({title:m.title,target:m.target});(m.children||[]).filter(x=>x.visible!==false).forEach(x=>links.push({title:x.title,target:x.target}));});if(bucket.direct&&!links.some(x=>x.target===bucket.direct)){const labels={Beranda:'Beranda',Profil:'Ringkasan Profil',Informasi:'Galeri & Kegiatan',Data:'Data Santri',PSB:'Pendaftaran','Layanan & Kontak':'Kontak'};links.unshift({title:labels[bucket.title]||bucket.title,target:bucket.direct});}const seen=new Set();return {...bucket,links:links.filter(x=>x.target&&!seen.has(x.target)&&seen.add(x.target))};}).filter(x=>x.links.length);
+ host.innerHTML=entries.map(g=>g.links.length===1?`<button type="button" class="cms-nav-link" onclick="cmsOpenPage('${esc(g.links[0].target)}')">${esc(g.title)}</button>`:`<details class="cms-nav-group"><summary>${esc(g.label)}</summary><div class="cms-submenu">${g.links.map(x=>`<button type="button" onclick="cmsOpenPage('${esc(x.target)}')">${esc(x.title)}</button>`).join('')}</div></details>`).join('');
+ host.querySelectorAll('details').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)host.querySelectorAll('details').forEach(o=>{if(o!==d)o.open=false;});}));
+ document.addEventListener('click',e=>{if(!host.contains(e.target))host.querySelectorAll('details[open]').forEach(d=>d.open=false);},{once:false});
+ host.querySelectorAll('.cms-submenu button').forEach(b=>b.addEventListener('click',()=>host.querySelectorAll('details').forEach(d=>d.open=false)));
+};
+// Editor WYSIWYG sederhana: klik teks pada bagian yang terlihat, ubah, lalu simpan.
+let inlineEditMode=false,inlineEditOriginal={},inlineEditDirty={};
+function inlineEditTargets(){
+ const roots=[document.querySelector('.sambutanGlobal'),byId('heroWrap'),byId('mainWrap'),document.querySelector('footer'),document.querySelector('header .head')].filter(Boolean);
+ const found=[];roots.forEach(root=>root.querySelectorAll('h1,h2,h3,h4,p,li,figcaption,.alamatHeader,.namaRTQ,.pengumumanChip,.cms-content').forEach(el=>{
+  if(el.closest('#adminArea')||el.closest('#inlineEditToolbar')||el.closest('button,a,label')||el.querySelector('input,textarea,select,button'))return;
+  if(!found.includes(el))found.push(el);
+ }));
+ found.forEach((el,i)=>{if(!el.dataset.inlineEditKey){const section=el.closest('section');const rootName=section?section.id:(el.closest('footer')?'footer':el.closest('header')?'header':el.closest('#heroWrap')?'hero':'sambutan');el.dataset.inlineEditKey=rootName+'-'+i;}});
+ return found;
+}
+function inlineApplySaved(){
+ const saved=(cms.legacy&&cms.legacy.inlineEdits)||{};
+ inlineEditTargets().forEach(el=>{const k=el.dataset.inlineEditKey;if(Object.prototype.hasOwnProperty.call(saved,k))el.textContent=saved[k];});
+}
+function inlineBuildToolbar(){
+ const area=byId('adminArea');if(!area||byId('inlineEditToolbar'))return;
+ const bar=document.createElement('div');bar.id='inlineEditToolbar';bar.innerHTML='<div class="ie-title">✏️ EDIT LANGSUNG PADA HALAMAN</div><button type="button" id="inlineEditToggle">Mulai Edit</button><button type="button" id="inlineEditSave">Simpan Perubahan</button><button type="button" id="inlineEditCancel">Batalkan</button><div class="ie-help">Aktifkan mode edit, lalu klik judul atau teks pada bagian website yang ingin diubah. Perubahan disimpan ke Supabase dan diterapkan langsung pada halaman.</div>';
+ document.body.appendChild(bar);
+ byId('inlineEditToggle').addEventListener('click',()=>{inlineEditMode=!inlineEditMode;byId('inlineEditToggle').textContent=inlineEditMode?'Selesai Mengedit':'Mulai Edit';inlineEditTargets().forEach(el=>{el.classList.toggle('inline-editable-active',inlineEditMode);el.contentEditable=inlineEditMode?'true':'false';el.spellcheck=inlineEditMode;});});
+ byId('inlineEditSave').addEventListener('click',async()=>{try{cms.legacy.inlineEdits=cms.legacy.inlineEdits||{};inlineEditTargets().forEach(el=>{const k=el.dataset.inlineEditKey;if(inlineEditDirty[k]!==undefined){const sec=el.closest('section[id^="cms-page-"]');if(sec){const pid=sec.id.slice(9),pg=cms.pages.find(p=>p.id===pid);if(pg){if(el.classList.contains('cms-content'))pg.content=el.textContent;else if(el.tagName==='H2'){pg.title=el.textContent;cms.menus.forEach(m=>(m.children||[]).forEach(ch=>{if(ch.target===pid)ch.title=pg.title;}));}}}else cms.legacy.inlineEdits[k]=el.textContent;}});await saveToServer();inlineEditDirty={};inlineEditOriginal={};inlineEditMode=false;inlineEditTargets().forEach(el=>{el.contentEditable='false';el.classList.remove('inline-editable-active');});byId('inlineEditToggle').textContent='Mulai Edit';alert('Perubahan halaman berhasil disimpan ke Supabase.');}catch(e){alert('Gagal menyimpan ke Supabase: '+e.message);}});
+ byId('inlineEditCancel').addEventListener('click',()=>{inlineEditTargets().forEach(el=>{const k=el.dataset.inlineEditKey;if(inlineEditOriginal[k]!==undefined)el.textContent=inlineEditOriginal[k];el.contentEditable='false';el.classList.remove('inline-editable-active');});inlineEditDirty={};inlineEditMode=false;byId('inlineEditToggle').textContent='Mulai Edit';});
+ document.addEventListener('focusin',e=>{const el=e.target.closest('[data-inline-edit-key]');if(el&&!inlineEditOriginal.hasOwnProperty(el.dataset.inlineEditKey))inlineEditOriginal[el.dataset.inlineEditKey]=el.textContent;});
+ document.addEventListener('input',e=>{const el=e.target.closest('[data-inline-edit-key]');if(el)inlineEditDirty[el.dataset.inlineEditKey]=el.textContent;});
+}
+const priorLoginForInline=window.loginAdmin;
+if(typeof priorLoginForInline==='function')window.loginAdmin=async function(){await priorLoginForInline();if(window._0x7a){inlineBuildToolbar();inlineApplySaved();}};
+const priorLoadCMS=loadCMS;
+loadCMS=async function(){await priorLoadCMS();inlineApplySaved();};
+const priorRenderPage=renderPage;
+renderPage=function(id){priorRenderPage(id);setTimeout(inlineApplySaved,0);};
+window.addEventListener('DOMContentLoaded',()=>{inlineBuildToolbar();inlineApplySaved();});
+
+
+// Mode admin ringkas: CMS tidak lagi ditampilkan sebagai panel panjang.
+buildAdmin=function(){const old=byId('cmsAdmin');if(old)old.remove();};
+function cmsAdminActive(){return !!window._0x7a;}
+function cmsMenuForBucket(bucket){
+ const keys=bucket.keys||[];let m=keys.map(k=>cms.menus.find(x=>x.title===k)).find(Boolean);
+ if(!m){m={title:keys[0]||bucket.title,target:'',children:[],visible:true};cms.menus.push(m);}m.children=m.children||[];return m;
+}
+let cmsModalState=null;
+function openCMSInlineModal(state){
+ if(!cmsAdminActive())return;
+ cmsModalState=state;
+ let modal=byId('cmsContextModal');
+ if(!modal){modal=document.createElement('div');modal.id='cmsContextModal';modal.className='cms-context-backdrop';modal.innerHTML=`<div class="cms-context-card"><button type="button" class="cms-context-close" id="cmsContextClose">×</button><div class="cms-context-kicker">PENGELOLAAN WEBSITE</div><h2 id="cmsContextHeading">Edit Menu</h2><label id="cmsContextTitleLabel">Nama</label><input id="cmsContextTitle" maxlength="90"><div id="cmsContextContentWrap"><label>Isi halaman</label><textarea id="cmsContextContent" rows="9" placeholder="Tulis isi halaman di sini..."></textarea></div><p class="cms-context-help">Perubahan disimpan ke Supabase setelah tombol simpan ditekan.</p><div class="cms-context-actions"><button type="button" class="cms-context-cancel" id="cmsContextCancel">Batal</button><button type="button" class="cms-context-save" id="cmsContextSave">Simpan</button></div><p id="cmsContextStatus" role="status"></p></div>`;document.body.appendChild(modal);
+  byId('cmsContextClose').onclick=closeCMSInlineModal;byId('cmsContextCancel').onclick=closeCMSInlineModal;byId('cmsContextSave').onclick=saveCMSInlineModal;modal.addEventListener('click',e=>{if(e.target===modal)closeCMSInlineModal();});
+ }
+ const group=state.bucket?state.bucket.title:'';
+ byId('cmsContextHeading').textContent=state.mode==='add'?'Tambah Submenu':state.mode==='edit'?'Edit Submenu dan Halaman':'Ubah Nama Menu';
+ byId('cmsContextTitleLabel').textContent=state.mode==='group'?'Nama menu':'Nama submenu';
+ byId('cmsContextTitle').value=state.mode==='edit'?state.page.title:state.mode==='group'?(state.menu.displayTitle||group):'';
+ byId('cmsContextContentWrap').style.display=state.mode==='group'?'none':'block';
+ byId('cmsContextContent').value=state.mode==='edit'?(state.page.content||''):'';
+ byId('cmsContextStatus').textContent=group?'Bagian menu: '+group:'';
+ modal.style.display='flex';setTimeout(()=>byId('cmsContextTitle').focus(),20);
+}
+function closeCMSInlineModal(){const m=byId('cmsContextModal');if(m)m.style.display='none';cmsModalState=null;}
+async function saveCMSInlineModal(){
+ const state=cmsModalState;if(!state)return;
+ const title=byId('cmsContextTitle').value.trim();if(!title){byId('cmsContextStatus').textContent='Nama wajib diisi.';return;}
+ const save=byId('cmsContextSave');save.disabled=true;save.textContent='Menyimpan...';
+ try{
+  if(state.mode==='group'){state.menu.displayTitle=title;}
+  else if(state.mode==='edit'){state.page.title=title;state.page.content=byId('cmsContextContent').value;cms.menus.forEach(m=>(m.children||[]).forEach(ch=>{if(ch.target===state.page.id)ch.title=title;}));}
+  else{
+   const base=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');let id=base||('halaman-'+Date.now());if(cms.pages.some(p=>p.id===id))id+='-'+Date.now();
+   const menu=cmsMenuForBucket(state.bucket);const page={id,title,menu:menu.title,content:byId('cmsContextContent').value,visible:true};cms.pages.push(page);menu.children.push({title,target:id,visible:true});state.newId=id;
+  }
+  await saveToServer();makePublicNav();if(state.mode==='add'&&state.newId)renderPage(state.newId);if(state.mode==='edit')renderPage(state.page.id);closeCMSInlineModal();
+ }catch(e){byId('cmsContextStatus').textContent='Gagal menyimpan: '+e.message;}
+ finally{save.disabled=false;save.textContent='Simpan';}
+}
+window.cmsInlineAddPage=function(bucketIndex){
+ const buckets=[{title:'Beranda',keys:['Beranda']},{title:'Profil',keys:['Profil']},{title:'Akademik',keys:['Pendidikan','Kesantrian']},{title:'Informasi',keys:['Informasi','Prestasi & Kegiatan','Galeri']},{title:'Data',keys:['Data Santri','Tenaga Pendidik']},{title:'PSB',keys:['PSB']},{title:'Layanan & Kontak',keys:['Layanan','Kontak']}];const bucket=buckets[bucketIndex];if(bucket)openCMSInlineModal({mode:'add',bucket});
+};
+window.cmsInlineEditPage=function(id){const page=cms.pages.find(x=>x.id===id);if(page)openCMSInlineModal({mode:'edit',page});else alert('Bagian bawaan website dapat diedit dengan tombol Mulai Edit setelah admin login.');};
+window.cmsInlineRenameGroup=function(bucketIndex){
+ const buckets=[{title:'Beranda',keys:['Beranda']},{title:'Profil',keys:['Profil']},{title:'Akademik',keys:['Pendidikan','Kesantrian']},{title:'Informasi',keys:['Informasi','Prestasi & Kegiatan','Galeri']},{title:'Data',keys:['Data Santri','Tenaga Pendidik']},{title:'PSB',keys:['PSB']},{title:'Layanan & Kontak',keys:['Layanan','Kontak']}];const bucket=buckets[bucketIndex];if(bucket)openCMSInlineModal({mode:'group',bucket,menu:cmsMenuForBucket(bucket)});
+};
+makePublicNav=function(){
+ const host=byId('cmsNav');if(!host)return;
+ const buckets=[{title:'Beranda',keys:['Beranda'],direct:'beranda'},{title:'Profil',keys:['Profil'],direct:'profil'},{title:'Akademik',keys:['Pendidikan','Kesantrian']},{title:'Informasi',keys:['Informasi','Prestasi & Kegiatan','Galeri'],direct:'kegiatan'},{title:'Data',keys:['Data Santri','Tenaga Pendidik'],direct:'siswa'},{title:'PSB',keys:['PSB'],direct:'daftar'},{title:'Layanan & Kontak',keys:['Layanan','Kontak'],direct:'kontak'}];
+ const visible=cms.menus.filter(m=>m.visible!==false),byTitle=new Map(visible.map(m=>[String(m.title||'').trim(),m]));
+ const entries=buckets.map((bucket,i)=>{const links=[];bucket.keys.forEach(key=>{const m=byTitle.get(key);if(!m)return;if(m.target)links.push({title:m.title,target:m.target});(m.children||[]).filter(x=>x.visible!==false).forEach(x=>links.push({title:x.title,target:x.target}));});if(bucket.direct&&!links.some(x=>x.target===bucket.direct)){const labels={Beranda:'Beranda',Profil:'Ringkasan Profil',Informasi:'Galeri & Kegiatan',Data:'Data Santri',PSB:'Pendaftaran','Layanan & Kontak':'Kontak'};links.unshift({title:labels[bucket.title]||bucket.title,target:bucket.direct});}const seen=new Set();const source= bucket.keys.map(k=>byTitle.get(k)).find(Boolean);return {...bucket,label:(source&&source.displayTitle)||bucket.title,index:i,links:links.filter(x=>x.target&&!seen.has(x.target)&&seen.add(x.target))};}).filter(x=>x.links.length);
+ const admin=cmsAdminActive();
+ host.innerHTML=entries.map(g=>{
+  const item=x=>`<div class="cms-nav-entry"><button type="button" onclick="cmsOpenPage('${esc(x.target)}')">${esc(x.title)}</button>${admin?`<span class="cms-inline-tools"><button type="button" title="Edit submenu" onclick="event.stopPropagation();cmsInlineEditPage('${esc(x.target)}')">✎</button></span>`:''}</div>`;
+  const actions=admin?`<button type="button" class="cms-add-sub" onclick="cmsInlineAddPage(${g.index})">＋ Tambah submenu di ${esc(g.title)}</button><button type="button" class="cms-add-sub" onclick="cmsInlineRenameGroup(${g.index})">✎ Ubah nama menu</button>`:'';
+  return g.links.length===1?`<div class="cms-nav-entry"><button type="button" class="cms-nav-link" onclick="cmsOpenPage('${esc(g.links[0].target)}')">${esc(g.label)}</button>${admin?`<span class="cms-inline-tools"><button type="button" onclick="cmsInlineAddPage(${g.index})" title="Tambah submenu">＋</button><button type="button" onclick="cmsInlineRenameGroup(${g.index})" title="Ubah nama menu">✎</button></span>`:''}</div>`:`<details class="cms-nav-group"><summary>${esc(g.label)}</summary><div class="cms-submenu">${g.links.map(item).join('')}${actions}</div></details>`;
+ }).join('');
+ host.querySelectorAll('details').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)host.querySelectorAll('details').forEach(o=>{if(o!==d)o.open=false;});}));
+ host.querySelectorAll('.cms-submenu button').forEach(b=>b.addEventListener('click',()=>{if(!b.classList.contains('cms-add-sub'))host.querySelectorAll('details').forEach(d=>d.open=false);}));
+};
+const oldInlineLogin=window.loginAdmin;
+if(typeof oldInlineLogin==='function')window.loginAdmin=async function(){await oldInlineLogin();if(cmsAdminActive()){document.body.classList.add('admin-logged-in');makePublicNav();inlineBuildToolbar();inlineApplySaved();}};
+const oldLogout=window.logoutAdmin;
+if(typeof oldLogout==='function')window.logoutAdmin=function(){document.body.classList.remove('admin-logged-in');inlineEditMode=false;makePublicNav();return oldLogout();};
+const oldInlineBuildToolbar=inlineBuildToolbar;
+inlineBuildToolbar=function(){oldInlineBuildToolbar();const h=byId('inlineEditToolbar');if(h&&!h.querySelector('.ie-note')){const n=document.createElement('div');n.className='ie-note';n.textContent='Kelola submenu melalui ikon ✎ dan tombol + pada menu di atas.';h.appendChild(n);}};
+
+
+// Editor konten berbentuk blok: admin dapat menambah, mengubah, dan menghapus bagian isi halaman.
+let cmsBlockDraft=[];
+function pageBlocks(page){
+ if(Array.isArray(page.blocks)&&page.blocks.length)return page.blocks;
+ const raw=String(page.content||'');
+ return raw.split(/\n\s*\n/).filter(x=>x.trim()).map(x=>({type:'paragraph',text:x}));
+}
+function renderPage(id){
+ const page=cms.pages.find(p=>p.id===id);
+ if(!page){if(['beranda','profil','siswa','guru','kegiatan','daftar','kontak'].includes(id)){window.show(id);return;}return;}
+ let sec=byId('cms-page-'+id);
+ if(!sec){sec=document.createElement('section');sec.id='cms-page-'+id;sec.className='hidden';byId('mainWrap').appendChild(sec);}
+ const blocks=pageBlocks(page);
+ sec.innerHTML=`<div class="section anim"><h2>${esc(page.title)}</h2><div class="cms-content">${blocks.map(b=>{const t=esc(b.text||'');if(b.type==='heading')return `<div class="cms-content-block"><h3>${t}</h3></div>`;if(b.type==='list')return `<div class="cms-content-block"><ul>${String(b.text||'').split('\n').filter(Boolean).map(x=>`<li>${esc(x.replace(/^[-•]\s*/,''))}</li>`).join('')}</ul></div>`;if(b.type==='notice')return `<div class="note cms-content-block">${t}</div>`;return `<div class="cms-content-block"><p>${t}</p></div>`;}).join('')||'<p>Belum ada konten. Admin dapat menambahkan isi halaman.</p>'}</div>${cmsAdminActive()?`<div class="cms-page-admin-actions"><button type="button" class="btn btnSmall" onclick="cmsInlineEditPage('${esc(id)}')">✎ EDIT ISI HALAMAN</button></div>`:''}</div>`;
+ window.show('cms-page-'+id);
+}
+function ensureCMSModal(){
+ let modal=byId('cmsContextModal');if(modal)return modal;
+ modal=document.createElement('div');modal.id='cmsContextModal';modal.className='cms-context-backdrop';
+ modal.innerHTML=`<div class="cms-context-card"><button type="button" class="cms-context-close" id="cmsContextClose">×</button><div class="cms-context-kicker">PENGELOLAAN WEBSITE</div><h2 id="cmsContextHeading">Edit Halaman</h2><label id="cmsContextTitleLabel">Nama submenu</label><input id="cmsContextTitle" maxlength="90"><div id="cmsContextContentWrap"><label>ISI KONTEN HALAMAN</label><p class="muted">Konten dibagi menjadi beberapa bagian. Tambahkan judul, paragraf, daftar, atau kotak pengumuman. Setiap bagian bisa diedit atau dihapus.</p><div id="cmsBlockEditor"></div><div class="cms-block-actions"><button type="button" class="cms-add-block" data-add-block="paragraph">＋ Paragraf</button><button type="button" class="cms-add-block" data-add-block="heading">＋ Subjudul</button><button type="button" class="cms-add-block" data-add-block="list">＋ Daftar</button><button type="button" class="cms-add-block" data-add-block="notice">＋ Kotak informasi</button></div></div><p class="cms-context-help">Perubahan disimpan ke Supabase setelah tombol simpan ditekan.</p><div class="cms-context-actions"><button type="button" class="cms-context-cancel" id="cmsContextCancel">Batal</button><button type="button" class="cms-context-save" id="cmsContextSave">Simpan Perubahan</button><button type="button" class="cms-delete-page" id="cmsContextDelete" style="display:none">Hapus Submenu</button></div><p id="cmsContextStatus" role="status"></p></div>`;
+ document.body.appendChild(modal);
+ byId('cmsContextClose').onclick=closeCMSInlineModal;byId('cmsContextCancel').onclick=closeCMSInlineModal;byId('cmsContextSave').onclick=saveCMSInlineModal;byId('cmsContextDelete').onclick=deleteCMSInlinePage;
+ modal.querySelectorAll('[data-add-block]').forEach(btn=>btn.addEventListener('click',()=>{cmsBlockDraft.push({type:btn.dataset.addBlock,text:''});renderCMSBlockEditor();}));
+ modal.addEventListener('click',e=>{if(e.target===modal)closeCMSInlineModal();});return modal;
+}
+function renderCMSBlockEditor(){
+ const host=byId('cmsBlockEditor');if(!host)return;
+ host.innerHTML=cmsBlockDraft.map((b,i)=>`<div class="cms-block-row"><div class="cms-block-row-head"><strong>BAGIAN ${i+1} · ${({paragraph:'PARAGRAF',heading:'SUBJUDUL',list:'DAFTAR',notice:'KOTAK INFORMASI'})[b.type]||'KONTEN'}</strong><button type="button" class="cms-delete-page" data-remove-block="${i}">Hapus bagian</button></div><select data-block-type="${i}"><option value="paragraph" ${b.type==='paragraph'?'selected':''}>Paragraf</option><option value="heading" ${b.type==='heading'?'selected':''}>Subjudul</option><option value="list" ${b.type==='list'?'selected':''}>Daftar (satu item per baris)</option><option value="notice" ${b.type==='notice'?'selected':''}>Kotak informasi</option></select><textarea data-block-text="${i}" placeholder="Tuliskan isi bagian ini...">${esc(b.text||'')}</textarea></div>`).join('')||'<p class="muted">Belum ada bagian konten. Gunakan tombol tambah bagian di bawah.</p>';
+ host.querySelectorAll('[data-block-type]').forEach(el=>el.addEventListener('change',()=>{cmsBlockDraft[Number(el.dataset.blockType)].type=el.value;}));
+ host.querySelectorAll('[data-block-text]').forEach(el=>el.addEventListener('input',()=>{cmsBlockDraft[Number(el.dataset.blockText)].text=el.value;}));
+ host.querySelectorAll('[data-remove-block]').forEach(el=>el.addEventListener('click',()=>{cmsBlockDraft.splice(Number(el.dataset.removeBlock),1);renderCMSBlockEditor();}));
+}
+function openCMSInlineModal(state){
+ if(!cmsAdminActive())return;
+ ensureCMSModal();cmsModalState=state;
+ const group=state.bucket?state.bucket.title:'';
+ byId('cmsContextHeading').textContent=state.mode==='add'?'Tambah Submenu dan Konten':state.mode==='edit'?'Edit Isi Halaman':'Ubah Nama Menu';
+ byId('cmsContextTitleLabel').textContent=state.mode==='group'?'Nama menu':'Nama submenu';
+ byId('cmsContextTitle').value=state.mode==='edit'?state.page.title:state.mode==='group'?(state.menu.displayTitle||group):'';
+ byId('cmsContextContentWrap').style.display=state.mode==='group'?'none':'block';
+ cmsBlockDraft=state.mode==='edit'?pageBlocks(state.page).map(x=>({...x})):state.mode==='add'?[{type:'paragraph',text:''}]:[];
+ renderCMSBlockEditor();byId('cmsContextDelete').style.display=state.mode==='edit'?'inline-block':'none';
+ byId('cmsContextStatus').textContent=group?'Bagian menu: '+group:'';
+ byId('cmsContextModal').style.display='flex';setTimeout(()=>byId('cmsContextTitle').focus(),20);
+}
+function closeCMSInlineModal(){const m=byId('cmsContextModal');if(m)m.style.display='none';cmsModalState=null;}
+async function saveCMSInlineModal(){
+ const state=cmsModalState;if(!state)return;const title=byId('cmsContextTitle').value.trim();if(!title){byId('cmsContextStatus').textContent='Nama wajib diisi.';return;}
+ const save=byId('cmsContextSave');save.disabled=true;save.textContent='Menyimpan...';
+ try{
+  if(state.mode==='group'){state.menu.displayTitle=title;}
+  else if(state.mode==='edit'){state.page.title=title;state.page.blocks=cmsBlockDraft.map(x=>({...x}));state.page.content=state.page.blocks.map(x=>x.text).join('\n\n');cms.menus.forEach(m=>(m.children||[]).forEach(ch=>{if(ch.target===state.page.id)ch.title=title;}));}
+  else{const base=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');let id=base||('halaman-'+Date.now());if(cms.pages.some(p=>p.id===id))id+='-'+Date.now();const menu=cmsMenuForBucket(state.bucket);const blocks=cmsBlockDraft.map(x=>({...x}));const page={id,title,menu:menu.title,content:blocks.map(x=>x.text).join('\n\n'),blocks,visible:true};cms.pages.push(page);menu.children.push({title,target:id,visible:true});state.newId=id;}
+  await saveToServer();makePublicNav();if(state.mode==='add'&&state.newId)renderPage(state.newId);if(state.mode==='edit')renderPage(state.page.id);closeCMSInlineModal();
+ }catch(e){byId('cmsContextStatus').textContent='Gagal menyimpan: '+e.message;}
+ finally{save.disabled=false;save.textContent='Simpan Perubahan';}
+}
+async function deleteCMSInlinePage(){const state=cmsModalState;if(!state||state.mode!=='edit')return;if(!confirm('Hapus submenu dan seluruh konten halaman ini?'))return;try{cms.pages=cms.pages.filter(p=>p.id!==state.page.id);cms.menus.forEach(m=>m.children=(m.children||[]).filter(ch=>ch.target!==state.page.id));const sec=byId('cms-page-'+state.page.id);if(sec)sec.remove();await saveToServer();makePublicNav();closeCMSInlineModal();window.show('beranda');alert('Submenu dan kontennya berhasil dihapus.');}catch(e){byId('cmsContextStatus').textContent='Gagal menghapus: '+e.message;}}
+window.cmsInlineEditPage=function(id){const page=cms.pages.find(x=>x.id===id);if(page)openCMSInlineModal({mode:'edit',page});else alert('Konten halaman bawaan ini belum tersedia dalam editor submenu. Gunakan formulir pengelolaan khusus pada halaman tersebut.');};
+window.cmsInlineDeletePage=deleteCMSInlinePage;
+// Hindari edit teks bebas yang hanya mengubah tulisan tanpa mengelola struktur konten.
+inlineBuildToolbar=function(){const old=byId('inlineEditToolbar');if(old)old.remove();document.querySelectorAll('[contenteditable="true"]').forEach(el=>el.contentEditable='false');};
+inlineApplySaved=function(){};
+const oldLoginForBlocks=window.loginAdmin;
+if(typeof oldLoginForBlocks==='function')window.loginAdmin=async function(){await oldLoginForBlocks();if(cmsAdminActive()){document.body.classList.add('admin-logged-in');makePublicNav();inlineBuildToolbar();}};
+const oldLogoutForBlocks=window.logoutAdmin;
+if(typeof oldLogoutForBlocks==='function')window.logoutAdmin=function(){document.body.classList.remove('admin-logged-in');return oldLogoutForBlocks();};
+makePublicNav=function(){
+ const host=byId('cmsNav');if(!host)return;
+ const buckets=[{title:'Beranda',keys:['Beranda'],direct:'beranda'},{title:'Profil',keys:['Profil'],direct:'profil'},{title:'Akademik',keys:['Pendidikan','Kesantrian']},{title:'Informasi',keys:['Informasi','Prestasi & Kegiatan','Galeri'],direct:'kegiatan'},{title:'Data',keys:['Data Santri','Tenaga Pendidik'],direct:'siswa'},{title:'PSB',keys:['PSB'],direct:'daftar'},{title:'Layanan & Kontak',keys:['Layanan','Kontak'],direct:'kontak'}];
+ const visible=cms.menus.filter(m=>m.visible!==false),byTitle=new Map(visible.map(m=>[String(m.title||'').trim(),m]));const admin=cmsAdminActive();
+ const entries=buckets.map((bucket,i)=>{const links=[];bucket.keys.forEach(key=>{const m=byTitle.get(key);if(!m)return;if(m.target)links.push({title:m.title,target:m.target});(m.children||[]).filter(x=>x.visible!==false).forEach(x=>links.push({title:x.title,target:x.target}));});if(bucket.direct&&!links.some(x=>x.target===bucket.direct)){const labels={Beranda:'Beranda',Profil:'Ringkasan Profil',Informasi:'Galeri & Kegiatan',Data:'Data Santri',PSB:'Pendaftaran','Layanan & Kontak':'Kontak'};links.unshift({title:labels[bucket.title]||bucket.title,target:bucket.direct});}const seen=new Set();const source=bucket.keys.map(k=>byTitle.get(k)).find(Boolean);return {...bucket,label:(source&&source.displayTitle)||bucket.title,index:i,links:links.filter(x=>x.target&&!seen.has(x.target)&&seen.add(x.target))};}).filter(x=>x.links.length);
+ host.innerHTML=entries.map(g=>{const item=x=>`<div class="cms-nav-entry"><button type="button" onclick="cmsOpenPage('${esc(x.target)}')">${esc(x.title)}</button>${admin&&cms.pages.some(p=>p.id===x.target)?`<span class="cms-inline-tools"><button type="button" title="Edit isi dan bagian halaman" onclick="event.stopPropagation();cmsInlineEditPage('${esc(x.target)}')">✎</button><button type="button" title="Hapus submenu" onclick="event.stopPropagation();cmsInlineEditPage('${esc(x.target)}')">⋯</button></span>`:''}</div>`;const actions=admin?`<button type="button" class="cms-add-sub" onclick="cmsInlineAddPage(${g.index})">＋ TAMBAH SUBMENU</button><button type="button" class="cms-add-sub" onclick="cmsInlineRenameGroup(${g.index})">✎ UBAH NAMA MENU</button>`:'';return `<details class="cms-nav-group"><summary>${esc(g.label)}</summary><div class="cms-submenu">${g.links.map(item).join('')}${actions}</div></details>`;}).join('');
+ host.querySelectorAll('details').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)host.querySelectorAll('details').forEach(o=>{if(o!==d)o.open=false;});}));host.querySelectorAll('.cms-submenu button').forEach(b=>b.addEventListener('click',()=>{if(!b.classList.contains('cms-add-sub'))host.querySelectorAll('details').forEach(d=>d.open=false);}));
+};
+
+window.addEventListener('DOMContentLoaded',async()=>{buildAdmin();await loadCMS();makePublicNav();});
+if(document.readyState!=='loading'){buildAdmin();loadCMS();}
+window.addEventListener('load',()=>{makePublicNav();});
 })();
 </script>
 
