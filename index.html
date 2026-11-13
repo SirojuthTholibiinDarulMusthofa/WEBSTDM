@@ -100,4 +100,38 @@ document.getElementById('formDaftar').addEventListener('submit',async function(e
 document.getElementById('formSiswa').addEventListener('submit',async function(e){e.preventDefault();var o=formData(e.target);var id=o.id;delete o.id;var res=id?await _0x6f.from('siswa').update(o).eq('id',id):await _0x6f.from('siswa').insert([o]);document.getElementById('msgSiswa').textContent=res.error?res.error.message:'Tersimpan!';if(!res.error){resetFormSiswa();loadAdmin();loadPublik()}});
 document.getElementById('formGuru').addEventListener('submit',async function(e){e.preventDefault();var o=formData(e.target);var r=await _0x6f.from('guru').insert([o]);document.getElementById('msgGuru').textContent=r.error?r.error.message:'Guru tersimpan!';if(!r.error){e.target.reset();loadGuruAdmin()}});
 loadPublik();loadGuru();
-</script></body></html>
+</script>
+<script>
+// === PATCH PERMANEN - PASSWORD NYAMBUNG SUPABASE - TINGGAL TEMPEL ===
+var SYNC_PASS = null;
+async function syncPassFromSupabase(){
+  try{
+    if(typeof _0x6f === 'undefined' || !_0x6f) return;
+    var r = await _0x6f.from('pengaturan').select('*').eq('id',999).maybeSingle();
+    if(r.data && r.data.data && r.data.data.admin_password){
+      SYNC_PASS = r.data.data.admin_password;
+      try{ localStorage.setItem('stdm_admin_pass', SYNC_PASS); }catch(e){}
+    }
+  }catch(e){}
+}
+function getAdminPass(){
+  if(SYNC_PASS) return SYNC_PASS;
+  try{ return localStorage.getItem('stdm_admin_pass') || 'STDM2026'; }catch(e){ return 'STDM2026'; }
+}
+function gantiPassword(){
+  var o = document.getElementById('oldPass').value;
+  var n1 = document.getElementById('newPass').value;
+  var n2 = document.getElementById('newPass2').value;
+  if(o !== getAdminPass()){ document.getElementById('msgPass').textContent='Password lama salah!'; return; }
+  if(!n1 || n1.length < 4){ document.getElementById('msgPass').textContent='Password baru minimal 4 karakter!'; return; }
+  if(n1 !== n2){ document.getElementById('msgPass').textContent='Ulangi password baru tidak sama!'; return; }
+  try{ localStorage.setItem('stdm_admin_pass', n1); }catch(e){}
+  SYNC_PASS = n1;
+  try{ if(typeof _0x6f !== 'undefined' && _0x6f){ _0x6f.from('pengaturan').upsert({id:999, data:{admin_password:n1}}); } }catch(e){}
+  document.getElementById('msgPass').textContent='Password berhasil diganti! Semua HP sekarang pakai password baru (PERMANEN).';
+}
+syncPassFromSupabase();
+setInterval(syncPassFromSupabase, 10000);
+// === AKHIR PATCH ===
+</script>
+</body></html>
