@@ -359,4 +359,83 @@ setTimeout(function(){
   // pantau tiap 2 detik, kalau admin tambah guru, tabel ini langsung update
   setInterval(window.renderGuruBeranda, 2000);
 }, 1000);
+</script><script>
+// TOMBOL SIMPAN GURU BARU - PASTI BISA DIKLIK
+setTimeout(function(){
+  var btns = document.querySelectorAll('button');
+  var btnSimpan = null;
+  for(var i=0;i<btns.length;i++){ if((btns[i].innerText||'').trim()==='Simpan Guru'){ btnSimpan=btns[i]; break; } }
+  if(!btnSimpan){ alert('Tombol Simpan tidak ketemu'); return; }
+  // buang fungsi lama yang rusak, ganti yang baru
+  var baru = btnSimpan.cloneNode(true);
+  btnSimpan.parentNode.replaceChild(baru, btnSimpan);
+
+  baru.addEventListener('click', function(e){
+    e.preventDefault();
+    // cari inputnya dari form-nya, bukan dari ID, biar pasti ketemu
+    var form = baru.closest('div');
+    var inputs = document.querySelectorAll('input');
+    var nama='', jabatan='', alamat='', hp='', fileInput=null;
+    // input di form Tambah Guru itu urutannya: 1=file, 2=nama, 3=jabatan, 4=alamat, 5=hp
+    // kita ambil yang ada di sekitar tombol ini
+    var semuaInput = baru.parentElement.querySelectorAll('input');
+    // kalau tidak ketemu, ambil semua input di halaman
+    if(semuaInput.length<5) semuaInput = document.querySelectorAll('input');
+    for(var k=0;k<semuaInput.length;k++){
+      if(semuaInput[k].type==='file') fileInput=semuaInput[k];
+    }
+    // ambil input text yang isinya sudah abang ketik di foto tadi
+    var texts = [];
+    for(var k=0;k<semuaInput.length;k++){ if(semuaInput[k].type!=='file' && semuaInput[k].type!=='hidden'){ texts.push(semuaInput[k]); } }
+    // texts[0]=nama, [1]=jabatan, [2]=alamat, [3]=hp
+    if(texts[0]) nama = texts[0].value.trim();
+    if(texts[1]) jabatan = texts[1].value.trim();
+    if(texts[2]) alamat = texts[2].value.trim();
+    if(texts[3]) hp = texts[3].value.trim();
+
+    if(!nama){ alert('Nama belum diisi bang!'); return; }
+
+    var list=[]; try{ list=JSON.parse(localStorage.getItem('stdm_guru')||'[]'); }catch(e){ list=[]; }
+    var foto = window._fotoGuruBase64 || '';
+
+    // kalau ada foto, kecilin dulu
+    if(fileInput && fileInput.files && fileInput.files[0]){
+      var r=new FileReader();
+      r.onload=function(ev){
+        var img=new Image();
+        img.onload=function(){
+          var c=document.createElement('canvas'); var max=400; var w=img.width,h=img.height;
+          if(w>h){ if(w>max){ h=h*max/w; w=max; } } else { if(h>max){ w=w*max/h; h=max; } }
+          c.width=w; c.height=h; c.getContext('2d').drawImage(img,0,0,w,h);
+          simpanAkhir(c.toDataURL('image/jpeg',0.7));
+        };
+        img.src=ev.target.result;
+      };
+      r.readAsDataURL(fileInput.files[0]);
+    } else {
+      simpanAkhir(foto);
+    }
+
+    function simpanAkhir(fotoFinal){
+      var obj={foto:fotoFinal, nama:nama, jabatan:jabatan, alamat:alamat, hp:hp};
+      // cek edit atau baru
+      var editIdx = document.getElementById('editGuruIndex');
+      var idx = editIdx ? parseInt(editIdx.value||'-1') : -1;
+      if(idx>=0 && list[idx]){ list[idx]=obj; } else { list.push(obj); }
+      localStorage.setItem('stdm_guru', JSON.stringify(list));
+      localStorage.setItem('guru', JSON.stringify(list));
+      alert('BERHASIL! '+nama+' tersimpan. Jumlah guru: '+list.length);
+      // kosongin lagi
+      for(var k=0;k<texts.length;k++){ texts[k].value=''; }
+      if(editIdx) editIdx.value='-1';
+      if(fileInput) fileInput.value='';
+      window._fotoGuruBase64='';
+      if(typeof renderGuru==='function') renderGuru();
+      if(typeof loadGuruAdmin==='function') loadGuruAdmin();
+      if(typeof window.renderGuruBeranda==='function') window.renderGuruBeranda();
+      location.reload();
+    }
+  });
+  console.log('Tombol Simpan Guru BARU sudah aktif');
+}, 1000);
 </script></body></html>
