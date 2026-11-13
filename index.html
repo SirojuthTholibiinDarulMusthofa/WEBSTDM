@@ -134,4 +134,49 @@ document.addEventListener('click', function(e){
     setTimeout(_0xSaveSettingServer, 800);
   }
 });
+</script><script>
+// JEMBATAN: localStorage -> Supabase, biar 1 HP edit, semua HP berubah
+(function(){
+  var c = window._0x6f || window.supabaseClient || null;
+  // cari client supabase yang sudah ada di web abang
+  try{ if(!c && window._0x6f) c = window._0x6f; }catch(e){}
+  if(!c) return;
+  var _set = localStorage.setItem.bind(localStorage);
+  var _get = localStorage.getItem.bind(localStorage);
+  var _keys = ['stdm_setting','stdm_daftar','stdm_guru','stdm_kegiatan','stdm_struktur','stdm_data','pengaturan','data_santri','data_guru','daftar','guru','kegiatan','struktur'];
+
+  // 1. Kalau ada data baru di localStorage, kirim ke server
+  localStorage.setItem = function(k,v){
+    _set(k,v);
+    if(_keys.indexOf(k)>=0 || k.indexOf('stdm')===0 || k.indexOf('data')===0){
+      try{
+        var o={}; try{o=JSON.parse(v)}catch(e){o={raw:v}}
+        c.from('sync_all').upsert([{id:k, data:o}]).then(function(){});
+      }catch(e){}
+    }
+  };
+
+  // 2. Pas web dibuka, ambil data terbaru dari server, timpa localStorage
+  async function _loadAll(){
+    try{
+      var r = await c.from('sync_all').select('*');
+      if(r.data){
+        r.data.forEach(function(row){
+          try{
+            var val = typeof row.data==='string' ? row.data : JSON.stringify(row.data);
+            // jangan timpa kalau isinya kosong
+            if(val && val!=='{}' && val!=='null') _set(row.id, val);
+          }catch(e){}
+        });
+        if(typeof applySetting==='function') applySetting();
+        if(typeof renderKegiatan==='function') renderKegiatan();
+        if(typeof loadDaftar==='function') loadDaftar();
+        if(typeof loadAdmin==='function') loadAdmin();
+        // reload tampilan publik tanpa refresh
+        if(typeof renderDaftar==='function') renderDaftar();
+      }
+    }catch(e){}
+  }
+  _loadAll();
+})();
 </script></body></html>
