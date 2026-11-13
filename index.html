@@ -215,8 +215,9 @@ async function gantiPassword(){
   var o=document.getElementById('oldPass').value,
       n1=document.getElementById('newPass').value,
       n2=document.getElementById('newPass2').value;
-  if(n1!==n2){document.getElementById('msgPass').textContent='Ulangi password baru tidak sama!';return}
-  if(!n1||n1.length<8){document.getElementById('msgPass').textContent='Password baru minimal 8 karakter.';return}
+  if(n1!==n2){document.getElementById('msgPass').textContent='Ulangi password baru tidak sama.';return}
+  if(!n1||n1.length<16){document.getElementById('msgPass').textContent='Password baru minimal 16 karakter.';return}
+  if(!/[a-z]/.test(n1)||!/[A-Z]/.test(n1)||!/[0-9]/.test(n1)){document.getElementById('msgPass').textContent='Gunakan huruf kecil, huruf besar, dan angka.';return}
   var c=window._0x6f||_0x6f;
   try{
     var user=(await c.auth.getUser()).data.user;
