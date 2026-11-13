@@ -308,10 +308,7 @@ renderGuru(); loadGuruAdmin();
 </script><script>
 // GANTI LIST LAMA DI BERANDA JADI TABEL, HAPUS AHMAD SODIK & JAMALLUDIN
 setTimeout(function(){
-  // 1. HAPUS DATA LAMA DARI PENYIMPANAN - BIAR TIDAK BALIK LAGI
-  localStorage.removeItem('stdm_guru');
-  localStorage.removeItem('guru');
-  localStorage.removeItem('data_guru');
+
 
   // 2. CARI JUDUL "DATA GURU / USTADZ" YANG DI BERANDA
   var semua = document.querySelectorAll('h2,h3,div,section');
