@@ -103,4 +103,35 @@ function _0xP(){try{var c=localStorage.getItem('stdm_admin_code');if(c)return JS
 function _0xS(a){var s='';for(var i=0;i<a.length;i++){s+=String.fromCharCode(a[i])}return s}
 function loginAdmin(){var v=document.getElementById('passAdmin').value;if(v===_0xS(_0xP())){_0x7a=true;document.getElementById('loginBox').classList.add('hidden');document.getElementById('adminArea').classList.remove('hidden');loadAdmin();loadDaftar();loadGuruAdmin();renderKegiatan();renderStrukturAdmin();applySetting()}else{document.getElementById('msgLogin').textContent='Password salah!'}}
 function gantiPassword(){var o=document.getElementById('oldPass').value,n1=document.getElementById('newPass').value,n2=document.getElementById('newPass2').value;if(o!==_0xS(_0xP())){document.getElementById('msgPass').textContent='Password lama salah!';return}if(!n1||n1.length<4){document.getElementById('msgPass').textContent='Password baru minimal 4 karakter!';return}if(n1!==n2){document.getElementById('msgPass').textContent='Ulangi password baru tidak sama!';return}var arr=[];for(var i=0;i<n1.length;i++){arr.push(n1.charCodeAt(i))}try{localStorage.setItem('stdm_admin_code',JSON.stringify(arr))}catch(e){}document.getElementById('msgPass').textContent='Password berhasil diganti! Di HP ini saja.'}
+</script><script>
+async function _0xSaveSettingServer(){
+  try{
+    var c = window._0x6f || _0x6f; if(!c) return;
+    var o = {}; try{ o = JSON.parse(localStorage.getItem('stdm_setting')||'{}') }catch(e){}
+    document.querySelectorAll('input,select').forEach(function(el){
+      var id=(el.id||'').toLowerCase();
+      if(id.indexOf('font')>=0 && el.value) o.font=el.value;
+      if((id.indexOf('warna')>=0||id.indexOf('color')>=0) && el.value) o.warna=el.value;
+    });
+    await c.from('pengaturan').upsert([{id:1, data:o}]);
+  }catch(e){}
+}
+async function _0xLoadSettingServer(){
+  try{
+    var c = window._0x6f || _0x6f; if(!c) return;
+    var r = await c.from('pengaturan').select('*').eq('id',1).maybeSingle();
+    if(r.data && r.data.data){
+      localStorage.setItem('stdm_setting', JSON.stringify(r.data.data));
+      if(typeof applySetting==='function') applySetting();
+    }
+  }catch(e){}
+}
+_0xLoadSettingServer();
+document.addEventListener('click', function(e){
+  var t=e.target; if(!t) return;
+  var txt=(t.textContent||'').toLowerCase();
+  if(txt.indexOf('simpan')>=0){
+    setTimeout(_0xSaveSettingServer, 800);
+  }
+});
 </script></body></html>
