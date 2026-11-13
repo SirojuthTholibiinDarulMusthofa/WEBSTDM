@@ -20,7 +20,7 @@
 <div class="section" style="border:2px solid #FF7A29"><h2>UPLOAD FOTO SAMBUTAN - LOGO YANBU'A</h2><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><div class="logoPreview" id="sambutanPreview" style="width:110px;height:110px">BELUM ADA FOTO</div><div style="flex:1;min-width:220px"><input type="file" id="inputSambutanFoto" accept="image/png,image/jpeg,image/jpg,image/webp"><button class="btn btnOrange" onclick="simpanSambutanFoto()">SIMPAN FOTO SAMBUTAN</button> <button class="btn" style="background:#999" onclick="hapusSambutanFoto()">HAPUS FOTO SAMBUTAN</button><p id="msgSambutanFoto" class="muted" style="color:#111;font-weight:700"></p></div></div></div>
 <div class="section"><h2>KELOLA STRUKTUR ORGANISASI</h2><div id="strukturAdminBox"></div><button class="btn btnOrange" onclick="simpanStruktur()">SIMPAN STRUKTUR ORGANISASI</button><p id="msgStruktur"></p></div>
 <div class="section"><h2>KELOLA FOTO KEGIATAN</h2><label>Judul Kegiatan</label><input id="kJudul"><label>Hari dan Tanggal</label><input id="kTanggal"><label>Foto Kegiatan</label><input type="file" id="kFoto" accept="image/*"><button class="btn btnOrange" onclick="tambahKegiatan()">TAMBAH KEGIATAN</button><p id="msgKegiatan"></p><div id="listKegiatanAdmin" style="margin-top:14px"></div></div>
-<div class="section"><h2>EDIT SAMBUTAN, JAM BELAJAR, PROFIL DAN IZIN</h2><form id="formProfil"><label>Judul Sambutan</label><input id="inSambutanJudul"><label>Isi Sambutan</label><textarea id="inSambutanIsi" rows="3"></textarea><label>Nama Kepala RTQ</label><input id="inNamaKepala"><label>Pengumuman</label><textarea id="inPengumuman" rows="2"></textarea><label>JAM BELAJAR</label><input id="inJamBelajar"><label>Izin Operasional</label><input id="inIzin"><label>Sejarah Singkat</label><textarea id="inSejarah" rows="5"></textarea><label>Visi</label><textarea id="inVisi" rows="2"></textarea><label>Misi</label><textarea id="inMisi" rows="4"></textarea><button class="btn btnOrange" type="submit" style="margin-top:14px">SIMPAN SAMBUTAN + JAM BELAJAR + PROFIL</button></form><p id="msgProfil"></p></div>
+<div class="section"><h2> SAMBUTAN, JAM BELAJAR, PROFIL DAN IZIN</h2><form id="formProfil"><label>Judul Sambutan</label><input id="inSambutanJudul"><label>Isi Sambutan</label><textarea id="inSambutanIsi" rows="3"></textarea><label>Nama Kepala RTQ</label><input id="inNamaKepala"><label>Pengumuman</label><textarea id="inPengumuman" rows="2"></textarea><label>JAM BELAJAR</label><input id="inJamBelajar"><label>Izin Operasional</label><input id="inIzin"><label>Sejarah Singkat</label><textarea id="inSejarah" rows="5"></textarea><label>Visi</label><textarea id="inVisi" rows="2"></textarea><label>Misi</label><textarea id="inMisi" rows="4"></textarea><button class="btn btnOrange" type="submit" style="margin-top:14px">SIMPAN SAMBUTAN + JAM BELAJAR + PROFIL</button></form><p id="msgProfil"></p></div>
 <div class="section"><h2>ADMIN - DATA LENGKAP</h2><button class="btn btnOrange" onclick="logoutAdmin()">KELUAR ADMIN</button><div style="margin-top:14px"><input id="cariAdmin" placeholder="Cari nama / NIK / NKK / NISN..." oninput="loadAdmin()"></div><div style="overflow:auto;margin-top:12px"><table><thead><tr><th>No</th><th>Nomor Induk / NISN</th><th>NKK / NIK</th><th>Nama / TTL / Usia</th><th>L/P / Jilid / Status</th><th>Orang Tua dan HP</th><th>Alamat</th><th>Aksi</th></tr></thead><tbody id="tblAdmin"></tbody></table></div></div>
 <div class="section"><h2>INPUT / EDIT DATA SISWA</h2><form id="formSiswa"><input type="hidden" name="id" id="editId"><div class="grid2"><div><label>Nomor Induk</label><input name="nomor_induk"></div><div><label>NISN</label><input name="nisn"></div><div><label>NKK</label><input name="nkk"></div><div><label>NIK</label><input name="nik"></div><div><label>Nama Siswa *</label><input name="nama_siswa" required></div><div><label>Tempat Lahir</label><input name="tempat_lahir"></div><div><label>Tanggal Lahir</label><input name="tanggal_lahir" type="date"></div><div><label>Jenis Kelamin</label><select name="jenis_kelamin"><option>Laki-laki</option><option>Perempuan</option></select></div><div><label>Jilid</label><select name="jilid"><option>Jilid Pemula</option><option>Jilid 1</option><option>Jilid 2</option><option>Jilid 3</option><option>Jilid 4</option><option>Jilid 5</option><option>Jilid 6</option><option>Jilid 7</option><option>Pasca</option></select></div><div><label>Status</label><select name="status"><option>Aktif</option><option>Tidak Aktif</option><option>Lulus</option><option>Tidak Lulus</option></select></div><div><label>Nama Ayah</label><input name="nama_ayah"></div><div><label>Pekerjaan Ayah</label><input name="pekerjaan_ayah"></div><div><label>HP Ayah</label><input name="hp_ayah"></div><div><label>Nama Ibu</label><input name="nama_ibu"></div><div><label>Pekerjaan Ibu</label><input name="pekerjaan_ibu"></div><div><label>HP Ibu</label><input name="hp_ibu"></div></div><label>Alamat Domisili</label><textarea name="alamat_domisili"></textarea><button class="btn" type="submit">SIMPAN / UPDATE SISWA</button><button class="btn" style="background:#FFB800;color:#111" type="button" onclick="resetFormSiswa()">BATAL EDIT / TAMBAH BARU</button></form><p id="msgSiswa"></p></div>
 <div class="section"><h2>INPUT DATA GURU</h2><form id="formGuru"><label>Nama + Gelar *</label><input name="nama_gelar" required><label>Riwayat Pendidikan</label><textarea name="riwayat_pendidikan"></textarea><label>Alamat</label><input name="alamat"><label>Jabatan</label><select name="jabatan"><option>Kepala RTQ</option><option>Guru</option><option>Bendahara</option><option>Staff</option></select><label>No HP</label><input name="no_hp"><button class="btn" type="submit">SIMPAN GURU</button></form><p id="msgGuru"></p><div id="listGuruAdmin"></div></div>
@@ -254,7 +254,7 @@ function simpanGuru(){
   var jabatan=document.getElementById('jabatanGuru').value.trim();
   var alamat=document.getElementById('alamatGuru').value.trim();
   var hp=document.getElementById('hpGuru').value.trim();
-  var idx=parseInt(document.getElementById('editGuruIndex').value);
+  var idx=parseInt(document.getElementById('GuruIndex').value);
   if(!nama){ document.getElementById('msgGuru').textContent='Nama wajib diisi!'; return; }
   var list=getGuru();
   var foto=_fotoGuruBase64 || (idx>=0 ? list[idx].foto : '');
@@ -264,7 +264,7 @@ function simpanGuru(){
   document.getElementById('msgGuru').textContent='Guru berhasil disimpan!';
   document.getElementById('namaGuru').value=''; document.getElementById('jabatanGuru').value='';
   document.getElementById('alamatGuru').value=''; document.getElementById('hpGuru').value='';
-  document.getElementById('editGuruIndex').value='-1'; _fotoGuruBase64='';
+  document.getElementById('GuruIndex').value='-1'; _fotoGuruBase64='';
   document.getElementById('previewGuru').style.display='none';
   renderGuru(); loadGuruAdmin();
 }
@@ -286,18 +286,18 @@ function loadGuruAdmin(){
     return '<div style="display:flex;align-items:center;gap:10px;border:1px solid #eee;padding:8px;border-radius:8px;margin:6px 0">'
       +'<img src="'+(g.foto||'')+'" style="width:50px;height:50px;object-fit:cover;border-radius:50%">'
       +'<div style="flex:1"><b>'+(g.nama||'')+'</b><br><small>'+(g.jabatan||'')+' - '+(g.hp||'')+'</small></div>'
-      +'<button onclick="editGuru('+i+')">Edit</button> <button onclick="hapusGuru('+i+')" style="color:red">Hapus</button></div>';
+      +'<button onclick="Guru('+i+')"></button> <button onclick="hapusGuru('+i+')" style="color:red">Hapus</button></div>';
   }).join('');
   // form admin cuma muncul kalau sudah login admin
   try{ if(window._0x7a){ document.getElementById('wrapGuruAdmin').style.display='block'; } }catch(e){}
 }
-function editGuru(i){
+function Guru(i){
   var g=getGuru()[i]; if(!g) return;
   document.getElementById('namaGuru').value=g.nama||'';
   document.getElementById('jabatanGuru').value=g.jabatan||'';
   document.getElementById('alamatGuru').value=g.alamat||'';
   document.getElementById('hpGuru').value=g.hp||'';
-  document.getElementById('editGuruIndex').value=i; _fotoGuruBase64=g.foto||'';
+  document.getElementById('GuruIndex').value=i; _fotoGuruBase64=g.foto||'';
   if(g.foto){ var p=document.getElementById('previewGuru'); p.src=g.foto; p.style.display='block'; }
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -305,4 +305,61 @@ function hapusGuru(i){ if(!confirm('Hapus guru ini?')) return; var list=getGuru(
 // cek tiap 1 detik, kalau admin login, munculkan form
 setInterval(function(){ try{ if(window._0x7a) document.getElementById('wrapGuruAdmin').style.display='block'; }catch(e){} }, 1000);
 renderGuru(); loadGuruAdmin();
+</script><script>
+// GANTI LIST LAMA DI BERANDA JADI TABEL, HAPUS AHMAD SODIK & JAMALLUDIN
+setTimeout(function(){
+  // 1. HAPUS DATA LAMA DARI PENYIMPANAN - BIAR TIDAK BALIK LAGI
+  localStorage.removeItem('stdm_guru');
+  localStorage.removeItem('guru');
+  localStorage.removeItem('data_guru');
+
+  // 2. CARI JUDUL "DATA GURU / USTADZ" YANG DI BERANDA
+  var semua = document.querySelectorAll('h2,h3,div,section');
+  var judul = null;
+  for(var i=0;i<semua.length;i++){
+    if((semua[i].innerText||'').trim() === 'DATA GURU / USTADZ'){
+      judul = semua[i]; break;
+    }
+  }
+  if(!judul){
+    // kalau tidak ketemu persis, cari yang mengandung
+    for(var i=0;i<semua.length;i++){
+      if((semua[i].innerText||'').indexOf('DATA GURU / USTADZ')>=0 && semua[i].children.length<5){ judul=semua[i]; break; }
+    }
+  }
+  if(!judul) return;
+
+  // 3. KOTAK INDUKNYA (yang ada 1. Ahmad Sodik, 2. Jamalludin)
+  var kotak = judul.parentElement;
+  // cari kotak yang paling besar yang isinya ada Ahmad Sodik
+  while(kotak && (kotak.innerText||'').indexOf('Ahmad Sodik')<0 && kotak.parentElement){
+    kotak = kotak.parentElement;
+  }
+  if(!kotak) kotak = judul.parentElement;
+
+  // 4. GANTI ISI KOTAK ITU JADI TABEL KOSONG + TULISAN BELUM ADA DATA
+  // jadi Ahmad Sodik & Jamalludin HILANG, ganti tabel baru
+  kotak.innerHTML = '<h2 style="text-align:center;color:#14532d">DATA GURU / USTADZ</h2>'
+    + '<div style="overflow-x:auto"><table id="tabelGuruBeranda" style="width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden">'
+    + '<thead><tr style="background:#14532d;color:#fff"><th style="padding:10px;border:1px solid #ddd">Foto</th><th style="padding:10px;border:1px solid #ddd">Nama & Gelar</th><th style="padding:10px;border:1px solid #ddd">Jabatan</th><th style="padding:10px;border:1px solid #ddd">Alamat</th><th style="padding:10px;border:1px solid #ddd">Nomor HP</th></tr></thead>'
+    + '<tbody id="bodyGuruBeranda"><tr><td colspan="5" style="padding:14px;text-align:center">Belum ada data guru - silahkan tambah dari menu Admin</td></tr></tbody>'
+    + '</table></div>';
+
+  // 5. SEMBUNYIKAN TABEL KEMBAR DI BAWAH, BIAR CUMA 1 DI SINI
+  var bawah = document.querySelectorAll('#wrapGuruPublik, #tabelGuruPaksa');
+  for(var k=0;k<bawah.length;k++){ bawah[k].style.display='none'; }
+
+  // 6. KALAU ADMIN TAMBAH GURU BARU, TABEL DI BERANDA INI IKUT KEISI
+  window.renderGuruBeranda = function(){
+    var list=[]; try{ list=JSON.parse(localStorage.getItem('stdm_guru')||'[]'); }catch(e){}
+    var body=document.getElementById('bodyGuruBeranda'); if(!body) return;
+    if(list.length===0){ body.innerHTML='<tr><td colspan="5" style="padding:14px;text-align:center">Belum ada data guru - silahkan tambah dari menu Admin</td></tr>'; return; }
+    body.innerHTML=list.map(function(g){
+      var foto=g.foto?'<img src="'+g.foto+'" style="width:60px;height:60px;object-fit:cover;border-radius:50%">':'<div style="width:60px;height:60px;background:#ddd;border-radius:50%;display:flex;align-items:center;justify-content:center">?</div>';
+      return '<tr><td style="padding:8px;border:1px solid #ddd;text-align:center">'+foto+'</td><td style="padding:8px;border:1px solid #ddd;font-weight:600">'+(g.nama||'')+'</td><td style="padding:8px;border:1px solid #ddd">'+(g.jabatan||'')+'</td><td style="padding:8px;border:1px solid #ddd">'+(g.alamat||'')+'</td><td style="padding:8px;border:1px solid #ddd">'+(g.hp||'')+'</td></tr>';
+    }).join('');
+  };
+  // pantau tiap 2 detik, kalau admin tambah guru, tabel ini langsung update
+  setInterval(window.renderGuruBeranda, 2000);
+}, 1000);
 </script></body></html>
